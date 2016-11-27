@@ -19,7 +19,7 @@ import java.net.URLEncoder;
 public class MerchantHandler {
     private static final String TAG = MerchantHandler.class.getSimpleName();
 
-    private static String merchantDomain = "www.wibmo.com";
+    private static String merchantDomain = "http://hartrans.gov.in";
 
     public static WPayInitRequest generateMessageHash(WPayInitRequest req) throws Exception {
         String posturl = "https://"+ getMerchantDomain() +"/testMerchant/generatewPayMessageHash.jsp";

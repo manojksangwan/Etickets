@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="50sp"
+    android:background="#BBDEFB"
+    >
+    <TextView
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="12sp"
+        android:id="@+id/tripRoute"
+        android:text="sangwan"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="manojK."
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="12sp"
+        android:id="@+id/jTime1"
+        android:layout_below="@+id/tripRoute"
+        />
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="manojK."
+    android:textSize="12dp"
+    android:textStyle="bold"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="12dp"
+    android:id="@+id/tripID"
+    android:textColor="#fa1818"
+    android:layout_below="@+id/tripRoute"
+        android:layout_toRightOf="@+id/jTime1"
+    />
+
+    <TextView
+        android:layout_width="70sp"
+        android:layout_height="match_parent"
+        android:text="manojK. #d9f16f0b"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:layout_alignParentRight="true"
+        android:id="@+id/rFare"
+        android:background="#558800"
+        android:layout_margin="5sp"
+        android:layout_marginRight="12dp"
+
+        />
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.TripLayout">
+
+    <item
+        android:id="@+id/action_notification1"
+        android:icon="@drawable/bs_cnt"
+        android:title="action_notification"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/seats_Legend"
+                android:orderInCategory="100"
+                android:enabled="false"
+                android:title="@string/menu_TL_seats_Legend"></item>
+
+            <item
+                android:id="@+id/seats_available"
+                android:icon="@drawable/bs_avl"
+                android:orderInCategory="100"
+                android:title="@string/menu_TL_seats_Available"></item>
+            <item
+                android:id="@+id/seats_booked"
+                android:icon="@drawable/bs_bkd"
+                android:orderInCategory="100"
+                android:title="@string/menu_TL_seats_Booked"></item>
+            <item
+                android:id="@+id/seats_blocked"
+                android:icon="@drawable/bs_sel"
+                android:orderInCategory="100"
+                android:title="@string/menu_TL_seats_Blocked"></item>
+            <item
+                android:id="@+id/seats_counter"
+                android:icon="@drawable/bs_cnt"
+                android:orderInCategory="100"
+                android:title="@string/menu_TL_seats_Counter"></item>
+        </menu>
+    </item>
+</menu>

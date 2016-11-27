@@ -1,3 +1,57 @@
 <resources>
-    <string name="app_name">Etickets</string>
+    <string name="app_name">HR eTickets</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_mobile_no">Mobile No.</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_mobile_no">This mobile no. is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."
+    </string>
+    <string name="my_login_title">Login</string>
+    <string name="my_subtitle">Haryana Roadways - Book eTickets</string>
+    <string name="menu_book_eticket_title">Book eTicket</string>
+    <string name="menu_cancel_eticket_title">Cancel eTicket</string>
+    <string name="menu_knowstatus_eticket_title">Know Status - eTicket</string>
+    <string name="prompt_bustype">Bus Type</string>
+    <string name="my_book_eticket_title">Search for available services</string>
+    <string name="prompt_info_query"><![CDATA[
+        &#8226; Online reservation (eTicket) will be available up to 5 hours before the schedule departure of the bus service.<br/><br/>
+        &#8226; Online reservation (eTicket) can be done 10 days in advance before the schedule departure of the bus service.<br/><br/>
+        &#8226; Rs.25 per seat for Super Luxury/Volvo buses and Rs. 5 per seat for Ordinary buses will be charged as reservation charges.<br/><br/><br/>
+        &#8226; For any queries regarding Super Luxury/Volvo bus services please contact inquiry offices of Haryana Roadways:
+    Chandigarh: 0172-2704014, Delhi: 011-23861262, Gurgaon: 0124-2320222     email:transport@hry.nic.in]]>
+</string>
+    <string name="menu_contact_us_title">Contact us</string>
+    <string name="menu_privacy_policy_title">Privacy Policy</string>
+    <string name="prompt_terms_conditions"><a href="http://hartrans.gov.in">Privacy Policy</a> | <a href="http://hartrans.gov.in">Terms and Conditions</a></string>
+    <string name="menu_terms_conditions_title"><![CDATA[Terms & Conditions]]></string>
+    <string name="menu_cancellation_refund_rules_title">Cancellation/Refund rules</string>
+    <string name="action_check_availability">Check Availability</string>
+    <string name="url_leaving_from">http://hartrans.gov.in/ors/api/bookingStations</string>
+    <string name="url_departure_date">http://hartrans.gov.in/ors/api/bookingDays</string>
+    <string name="title_activity_available_services">AvailableServices</string>
+    <string name="my_available_services_title">Available Services</string>
+    <string name="title_activity_layout_for_seats">layout_for_seats</string>
+    <string name="title_activity_trip_layout">TripLayout</string>
+    <string name="menu_TL_seats_Available">Seats Available for Booking</string>
+    <string name="menu_TL_seats_Booked">Seats already booked</string>
+    <string name="menu_TL_seats_Blocked">Seats selected/blocked</string>
+    <string name="menu_TL_seats_Counter">Available only for counter booking</string>
+    <string name="my_trip_layout_title">Trip Layout</string>
+    <string name="title_activity_passenger_info">PassengerInfo</string>
+    <string name="prompt_p_name1">Passenger Name - 1</string>
+    <string name="prompt_p_age1">Age (in Yrs)</string>
+    <string name="menu_TL_seats_Legend">Seats Legend</string>
+    <string name="title_activity_customer_details">CustomerDetails</string>
+    <string name="Rs">\u20B9</string>
+    <string name="rs">\u20A8</string>
+    <string name="title_activity_test_payment">TestPayment</string>
 </resources>

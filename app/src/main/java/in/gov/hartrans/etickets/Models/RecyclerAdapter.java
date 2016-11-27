@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.manojk.ors.R;
+import in.gov.hartrans.etickets.R;
 
 import java.util.ArrayList;
 

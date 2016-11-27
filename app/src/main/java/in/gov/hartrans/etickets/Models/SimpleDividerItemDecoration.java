@@ -7,7 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.manojk.ors.R;
+import in.gov.hartrans.etickets.R;
 
 /**
  * Created by manojK on 11/11/2016.

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="in.gov.hartrans.etickets.PassengerInfo"
+    tools:showIn="@layout/activity_passenger_info">
+
+    <ScrollView
+        android:id="@+id/passengerInfo_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:id="@+id/passengerInfo_form_LL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffbb"
+            android:padding="5sp">
+<!-- Passenger info SEAT 1 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/passenger1"
+                android:background="#fff">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/til_p_name1"
+                android:textColorHint="#000">
+                <AutoCompleteTextView
+                    android:id="@+id/p_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_p_name1"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:id="@+id/til_p_age1"
+                android:layout_below="@+id/til_p_name1">
+                <AutoCompleteTextView
+                    android:id="@+id/p_age1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age (in Yrs)"
+                    android:inputType="textPhonetic"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/p_gender1"
+                android:layout_below="@+id/til_p_name1"
+                android:layout_toRightOf="@+id/til_p_age1"
+                android:layout_marginTop="17sp"
+                android:layout_marginLeft="25sp"
+                >
+                <RadioButton android:id="@+id/male_pGender1"
+                    android:text="Male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton android:id="@+id/female_pGender1"
+                    android:text="Female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20sp"/>
+            </RadioGroup>
+            </RelativeLayout>
+<!-- Passenger info SEAT 2 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/passenger2"
+                android:background="#fff"
+                android:layout_marginTop="5sp">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:id="@+id/til_p_name2">
+
+                <AutoCompleteTextView
+                    android:id="@+id/p_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Passenger Name - 2"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:id="@+id/til_p_age2"
+                android:layout_below="@+id/til_p_name2">
+
+                <AutoCompleteTextView
+                    android:id="@+id/p_age2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age (in Yrs)"
+                    android:inputType="textPhonetic"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/p_gender2"
+                    android:layout_below="@+id/til_p_name2"
+                    android:layout_toRightOf="@+id/til_p_age2"
+                    android:layout_marginTop="17sp"
+                    android:layout_marginLeft="25sp">
+                    <RadioButton android:id="@+id/male_pGender2"
+                        android:text="Male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton android:id="@+id/female_pGender2"
+                        android:text="Female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"/>
+                </RadioGroup>
+            </RelativeLayout>
+<!-- Passenger info SEAT 3 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/passenger3"
+                android:background="#fff"
+                android:layout_marginTop="5sp">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:id="@+id/til_p_name3">
+                <AutoCompleteTextView
+                    android:id="@+id/p_name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Passenger Name - 3"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:id="@+id/til_p_age3"
+                android:layout_below="@+id/til_p_name3">
+                <AutoCompleteTextView
+                    android:id="@+id/p_age3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age (in Yrs)"
+                    android:inputType="textPhonetic"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/p_gender3"
+                    android:layout_below="@+id/til_p_name3"
+                    android:layout_toRightOf="@+id/til_p_age3"
+                    android:layout_marginTop="17sp"
+                    android:layout_marginLeft="25sp">
+                    <RadioButton android:id="@+id/male_pGender3"
+                        android:text="Male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton android:id="@+id/female_pGender3"
+                        android:text="Female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"/>
+                </RadioGroup>
+            </RelativeLayout>
+<!-- Passenger info SEAT 4 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/passenger4"
+                android:background="#fff"
+                android:layout_marginTop="5sp">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:id="@+id/til_p_name4">
+                <AutoCompleteTextView
+                    android:id="@+id/p_name4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Passenger Name - 4"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:id="@+id/til_p_age4"
+                android:layout_below="@+id/til_p_name4">
+                <AutoCompleteTextView
+                    android:id="@+id/p_age4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age (in Yrs)"
+                    android:inputType="textPhonetic"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/p_gender4"
+                    android:layout_below="@+id/til_p_name4"
+                    android:layout_toRightOf="@+id/til_p_age4"
+                    android:layout_marginTop="17sp"
+                    android:layout_marginLeft="25sp">
+                    <RadioButton android:id="@+id/male_pGender4"
+                        android:text="Male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton android:id="@+id/female_pGender4"
+                        android:text="Female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"/>
+                </RadioGroup>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

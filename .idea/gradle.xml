@@ -8,13 +8,19 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/SecureComponent-release" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app-release" />
+            <option value="$PROJECT_DIR$/secure-component-sdk" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/SecureComponent-release" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app-release" />
+            <option value="$PROJECT_DIR$/secure-component-sdk" />
           </set>
         </option>
       </GradleProjectSettings>

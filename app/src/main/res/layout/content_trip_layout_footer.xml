@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80sp"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    android:background="#ffffff"
+    android:id="@+id/rl_footer"
+    android:layout_marginLeft="12sp"
+    android:layout_marginRight="12sp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:id="@+id/seats_selected"
+        android:text="manojK."
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="start"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/fareAmount"
+        android:text="Sangwan"
+        android:layout_below="@+id/seats_selected"
+        />
+    <Button
+        android:id="@+id/bt_book_eticket"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Book \ne-Ticket "
+        android:textStyle="bold"
+        android:background="#558800"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="15sp"
+        android:layout_alignParentRight="true"
+        />
+
+</RelativeLayout>

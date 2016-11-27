@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/book_eticket"
+        android:title="@string/menu_book_eticket_title"></item>
+    <item
+        android:id="@+id/cancel_eticket"
+        android:title="@string/menu_cancel_eticket_title"></item>
+    <item
+        android:id="@+id/knowstatus_eticket"
+        android:title="@string/menu_knowstatus_eticket_title"></item>
+    <item
+        android:id="@+id/contact_us"
+        android:title="@string/menu_contact_us_title"></item>
+    <item
+        android:id="@+id/privacy_policy"
+        android:title="@string/menu_privacy_policy_title"></item>
+    <item
+        android:id="@+id/terms_conditions"
+        android:title="@string/menu_terms_conditions_title"></item>
+    <item
+        android:id="@+id/cancellation_refund_rules"
+        android:title="@string/menu_cancellation_refund_rules_title"></item>
+
+</menu>

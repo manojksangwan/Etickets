@@ -22,12 +22,13 @@ public class MerchantHandler {
     private static String merchantDomain = "http://hartrans.gov.in";
 
     public static WPayInitRequest generateMessageHash(WPayInitRequest req) throws Exception {
-        String posturl = "https://"+ getMerchantDomain() +"/testMerchant/generatewPayMessageHash.jsp";
-        //String posturl = "https://localhost/app/generatewPayMessageHash";
+        // String posturl = "https://"+ getMerchantDomain() +"/testMerchant/generatewPayMessageHash.jsp";
+        String posturl = "http://hrtransport.in/ors/api/appGeneratewPayMessageHash";
 
         StringBuilder postsb = new StringBuilder();
 
         postsb.append(URLEncoder.encode("merAppData", "UTF-8"));
+
         postsb.append("=");
         postsb.append(URLEncoder.encode(req.getTransactionInfo().getMerAppData(), "UTF-8"));
         postsb.append("&");
@@ -37,9 +38,11 @@ public class MerchantHandler {
         postsb.append(URLEncoder.encode(req.getTransactionInfo().getTxnAmount(), "UTF-8"));
         postsb.append("&");
 
-
         byte postData[] = postsb.toString().getBytes("utf-8");
 
+        Log.d(TAG, "rawres: "+posturl +"   post DATA: "+ postsb.toString() );
+
+        //String rawres = HttpUtil.postData(posturl, postData, false, HttpUtil.WWW_FORM);
         String rawres = HttpUtil.postData(posturl, postData, false, HttpUtil.WWW_FORM);
         if(rawres==null) {
             throw new IOException("Unable to authenticate!");
@@ -77,3 +80,10 @@ public class MerchantHandler {
         MerchantHandler.merchantDomain = merchantDomain;
     }
 }
+
+
+
+
+
+
+

@@ -54,4 +54,12 @@
     <string name="Rs">\u20B9</string>
     <string name="rs">\u20A8</string>
     <string name="title_activity_test_payment">TestPayment</string>
+
+        <string name="action_shell">Web Shell Sample</string>
+        <string name="action_browser">Open in Browser</string>
+
+        <string name="title_activity_button">Button Options</string>
+        <string name="title_activity_web_shell">Web Shell Sample</string>
+
+
 </resources>

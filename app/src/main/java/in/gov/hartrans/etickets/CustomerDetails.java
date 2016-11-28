@@ -25,7 +25,8 @@ import com.enstage.wibmo.sdk.inapp.pojo.TransactionInfo;
 import com.enstage.wibmo.sdk.inapp.pojo.WPayResponse;
 import in.gov.hartrans.etickets.Models.MerchantHandler;
 import in.gov.hartrans.etickets.Models.orsAvailableServices;
-import com.hdfcmerchant.PayActivity;
+
+//import com.hdfcmerchant.PayActivity;
 
 
 public class CustomerDetails extends AppCompatActivity {
@@ -38,7 +39,7 @@ public class CustomerDetails extends AppCompatActivity {
     private Activity activity = null;
     private TextView outputView =null;
 
-    private long amount = 100;
+    private long amount = 14000;
     private long startTime;
     private long endTime;
 
@@ -59,8 +60,8 @@ public class CustomerDetails extends AppCompatActivity {
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
-                //processPayWithWibmo();
-                upi_transaction();
+                processPayWithWibmo();
+                //upi_transaction();
             }
         });
 
@@ -89,8 +90,8 @@ public class CustomerDetails extends AppCompatActivity {
         final Context context = getApplicationContext();
         Thread t = new Thread(){
           public void run(){
-              WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
-              WibmoSDKConfig.setWibmoDomain("https://wallet.pc.enstage-sas.com");
+              //WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
+              //WibmoSDKConfig.setWibmoDomain("https://wallet.pc.enstage-sas.com");
               WibmoSDK.init(context);
           }
         };
@@ -109,28 +110,28 @@ public class CustomerDetails extends AppCompatActivity {
 
         /**/
         //staging
-        String merID = "155228620480468256"; //"MYMERCHANTID";//change me
-        String merAppID = "1538"; //"MYAPPID";//change me
+
+        String merID = "143720911373862455993"; //"MYMERCHANTID";//change me
+        String merAppID = "6455"; //"MYAPPID";//change me
         String merMerCountryCode = "IN";//change me if req
         MerchantHandler.setMerchantDomain("hartrans.gov.in/ors"); //"mytestserver.com"
         //-
         /**/
 
         wPayInitRequest = new WPayInitRequest();
-
         TransactionInfo transactionInfo = new TransactionInfo();
         transactionInfo.setTxnAmount("" + amount);//implied decimals Rs1=100
         transactionInfo.setTxnCurrency("356");//356 for INR
-        transactionInfo.setSupportedPaymentType(new String[]{
-                "*"});
+        transactionInfo.setSupportedPaymentType(new String[]{"*"});
         //"*", "w.ds.pt.card_visa", "w.ds.pt.card_mastercard" or * or "w.ds.pt.card_wallet"
         //transactionInfo.setRestrictedPaymentType(new String[]{WibmoSDK.PAYMENT_TYPE_WALLET_CARD});
 
-        transactionInfo.setTxnDesc("merchant txn desc");//change me
-        transactionInfo.setMerAppData("This is some merchant data");//change me
+        transactionInfo.setTxnDesc("123456789012");//change me
+        transactionInfo.setMerAppData("123456");//change me
         transactionInfo.setMerDataField("This is for recon");//change me
         transactionInfo.setChargeLater(false);
         transactionInfo.setTxnAmtKnown(true);
+
 
         MerchantInfo merchantInfo = new MerchantInfo();
         merchantInfo.setMerAppId(merAppID);
@@ -168,7 +169,7 @@ public class CustomerDetails extends AppCompatActivity {
 
         new MakeMessageHashTask().execute();
     }
-/*
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == WibmoSDK.REQUEST_CODE_IAP_PAY) {
@@ -222,7 +223,7 @@ public class CustomerDetails extends AppCompatActivity {
             outputView.setText(sb.toString());
         }// requestCode
     }//onActivityResult
-*/
+
 
 
     private class MakeMessageHashTask extends AsyncTask<Void, Void, Void> {
@@ -267,7 +268,7 @@ public class CustomerDetails extends AppCompatActivity {
             }
         }
     }
-
+/*
     private void upi_transaction(){
         Bundle bundle = new Bundle();
         bundle.putString("mid", "HDFC000000000044");
@@ -341,4 +342,5 @@ public class CustomerDetails extends AppCompatActivity {
             outputView.setText(statusCode + "  " + responsecode);
         }
     }
+    */
 }

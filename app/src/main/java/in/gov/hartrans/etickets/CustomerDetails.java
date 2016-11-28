@@ -92,6 +92,9 @@ public class CustomerDetails extends AppCompatActivity {
           public void run(){
               //WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
               //WibmoSDKConfig.setWibmoDomain("https://wallet.pc.enstage-sas.com");
+              WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
+              WibmoSDKConfig.setWibmoDomain("https://api.pc.enstage-sas.com");
+
               WibmoSDK.init(context);
           }
         };

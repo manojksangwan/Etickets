@@ -12,14 +12,6 @@
         android:id="@+id/my_toolbar"
         layout="@layout/toolbar"></include>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
     <ScrollView
         android:id="@+id/book_eTicket_form"
         android:layout_width="match_parent"
@@ -172,15 +164,6 @@
                 android:background="#ffffff"
                 android:padding="20sp"
                 android:textColor="#fc0101" />
-
-            <TextView
-                android:id="@+id/tvTerms_Conditions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:autoLink="all"
-                android:gravity="center"
-                android:text="@string/prompt_terms_conditions" />
         </LinearLayout>
     </ScrollView>
 

@@ -79,8 +79,9 @@ public class CustomerDetails extends AppCompatActivity {
                 wPayInitRequest = null;
                 wPayResponse = null;
 
-                processPayWithWibmo();
-                //upi_transaction();
+                //processPayWithWibmo();
+                Intent intent = new Intent(CustomerDetails.this, TestPayment.class);
+                startActivity(intent);
             }
         });
 

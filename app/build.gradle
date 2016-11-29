@@ -32,7 +32,7 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
     compile 'com.wibmo.iap.sdk:wibmo-iap-sdk:+'
-    //compile project(':app-release')
-    //compile project(':secure-component-sdk')
-    //compile project(':SecureComponent-release')
+    compile project(':app-release')
+    compile project(':secure-component-sdk')
+    compile project(':SecureComponent-release')
 }

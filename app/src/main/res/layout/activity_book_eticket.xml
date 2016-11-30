@@ -115,8 +115,7 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:gravity="center_vertical"
->
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -154,16 +153,112 @@
                 android:textColor="#ffffff"
                 />
 
-            <TextView
-                android:id="@+id/display_info_query"
+
+
+        <LinearLayout
+            android:id="@+id/ll_info"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#CCffffff"
+            android:textColor="#fc0101"
+            android:layout_marginTop="15sp"
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15sp"
-                android:alpha=".6"
-                android:background="#ffffff"
-                android:padding="20sp"
-                android:textColor="#fc0101" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bullet1"
+                    android:textStyle="bold"
+                    android:layout_width="20sp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:text="1"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/bullet1Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="@string/prompt_info_query1"
+                    android:textColor="#fc0101"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bullet2"
+                    android:textStyle="bold"
+                    android:layout_width="20sp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:text="2"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/bullet2Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="@string/prompt_info_query2"
+                    android:textColor="#fc0101"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bullet3"
+                    android:textStyle="bold"
+                    android:layout_width="20sp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:text="3"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/bullet3Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="@string/prompt_info_query3"
+                    android:textColor="#fc0101"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bullet4"
+                    android:textStyle="bold"
+                    android:layout_width="20sp"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:text="4"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/bullet4Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="@string/prompt_info_query4"
+                    android:textColor="#fc0101"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

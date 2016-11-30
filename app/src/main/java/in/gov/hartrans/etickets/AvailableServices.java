@@ -1,17 +1,21 @@
 package in.gov.hartrans.etickets;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,15 +34,22 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
     RecyclerView.LayoutManager layoutManager;
     ArrayList<orsAvailableServices> arList = new ArrayList<>();
     ArrayList<orsAvailableServices> asList = new ArrayList<>();
+    AppCompatTextView rCharges;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_services);
 
+        dialog = ProgressDialog.show(this, "", "Please wait", true);
+        dialog.setInverseBackgroundForced(true);
+        dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
+
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +58,7 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
                         .setAction("Action", null).show();
             }
         });
+        */
 
         // custom toolbar settings
         Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -123,13 +135,33 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
     public void notifySuccess(ArrayList<orsAvailableServices> orsAS){
         //Log.d("myApp", "ors_availableServices TASK -response  " + orsAS);
         adapter = new orsAvailableServicesAdapter(orsAS);
-        recyclerView.setAdapter(adapter);
         arList = orsAS;
+        rCharges = (AppCompatTextView) findViewById(R.id.rCharges);
+
+        String txt="";
+        if (!arList.isEmpty())
+        {
+            txt = "Place of Boarding <b>" + arList.get(0).getBoarding() + "</b>";
+            if (arList.get(0).getPlateform().length()>1)
+            {
+                txt+=" Plateform No. <b>" +arList.get(0).getPlateform() +"</b>";
+            }
+            txt+="<br/>" + "<font color='red' size='1'>Reservation Charges <b>Rs." + arList.get(0).getReservationCharges() + "</b> per seat extra.</font>";
+            recyclerView.setAdapter(adapter);
+        }else {
+            txt = "<font color='red' size='3'><br/>Not available for online booking.<br/></font>";
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) rCharges.getLayoutParams();
+            layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+            rCharges.setLayoutParams(layoutParams);
+        }
+
+        rCharges.setText(Html.fromHtml(txt));
+        dialog.dismiss();
     }
     @Override
     public void notifySuccess(JSONObject response){}
     @Override
     public void notifySuccess(JSONArray response){}
     @Override
-    public void notifyError(VolleyError error){}
+    public void notifyError(VolleyError error){dialog.dismiss();}
 }

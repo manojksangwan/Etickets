@@ -36,12 +36,15 @@ public class orsAvailableServicesAdapter  extends RecyclerView.Adapter<orsAvaila
     }
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.TripRoute.setText(arrayList.get(position).getBusType() +": "+arrayList.get(position).getTripRoute());
+        String TripRouteVia ="<em>"+ arrayList.get(position).getBusType() +"</em>: <strong>"+arrayList.get(position).getTripRoute()+"</strong>";
+        TripRouteVia+="<br/><small>Via: <i>" + arrayList.get(position).getVia() + "</i>";
+        TripRouteVia+=" Route KMs: " + arrayList.get(position).getrKMS()+"</small>";
+
+        holder.TripRoute.setText(Html.fromHtml(TripRouteVia));
         SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
         holder.TripID.setText(arrayList.get(position).getTripID()+"");
         holder.Jtime1.setText(output.format(arrayList.get(position).getjTime1()));
-        holder.rFare.setText(Html.fromHtml("Seats: "+arrayList.get(position).getAvailableSeats()+"<br/>Rs."+arrayList.get(position).getrFare()+"."));
-
+        holder.rFare.setText(Html.fromHtml("Seats: "+arrayList.get(position).getAvailableSeats()+"<br/>\u20B9 &nbsp;"+arrayList.get(position).getrFare()));
     }
 
     @Override

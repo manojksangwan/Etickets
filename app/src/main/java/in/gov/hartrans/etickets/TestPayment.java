@@ -48,7 +48,7 @@ public class TestPayment extends AppCompatActivity {
         bundle.putString("currency", "INR");
         bundle.putString("appName", "in.gov.hartrans.etickets");
         bundle.putString("paymentType", "p2m");
-        bundle.putString("transactionType", "collect");
+        bundle.putString("transactionType", "PAY");
         bundle.putString("payeePayAddress", "Director General State Transport Haryana");
         bundle.putString("payeeAccntNo", "");
         bundle.putString("payeeIFSC", "");

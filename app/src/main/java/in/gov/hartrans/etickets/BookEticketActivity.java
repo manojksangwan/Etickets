@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -51,8 +52,9 @@ public class BookEticketActivity extends AppCompatActivity {
 
     Button bCheckAvailability = null;
     private String sLeaving, sDeparting, busType, dDate;
-
     private ProgressDialog dialog;
+
+    // LinearLayout ll_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,10 @@ public class BookEticketActivity extends AppCompatActivity {
         mVolleyService.getDataVolley("GETCALL_departure_date", "http://hartrans.gov.in/ors/api/bookingDays");
 
 
-        ((TextView) findViewById(R.id.display_info_query)).setText(Html.fromHtml(getText(R.string.prompt_info_query).toString()));
+        //((TextView) findViewById(R.id.display_info_query)).setText(Html.fromHtml(getText(R.string.prompt_info_query).toString()));
+
+        //ll_info = (LinearLayout)findViewById(R.id.ll_info);
+        //ll_info.set
 
         stations_leaving_from = new ArrayList<String>();
         stations_departing_to = new ArrayList<String>();

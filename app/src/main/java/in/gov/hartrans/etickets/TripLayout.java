@@ -1,10 +1,12 @@
 package in.gov.hartrans.etickets;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import in.gov.hartrans.etickets.Models.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class TripLayout extends AppCompatActivity implements orsTripLayout_iResult, orsTripLayoutAdapter.ItemClickCallback {
@@ -38,10 +41,19 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
 
     int pSeat1 = 0, pSeat2=0, pSeat3=0, pSeat4=0, rAmount=0, fareAmount=0;
     Button bt_book_eTicket;
+
+    AppCompatTextView header_Title;
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_layout);
+
+        dialog = ProgressDialog.show(this, "", "Please wait", true);
+        dialog.setInverseBackgroundForced(true);
+        dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
+
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 /*
@@ -112,6 +124,7 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
     public void notifyError(VolleyError error) {
         //Log.d("myApp", "orsTripLayout Adapter  -response  " + error.printStackTrace());
         error.printStackTrace();
+        dialog.dismiss();
     }
 
     @Override
@@ -131,6 +144,18 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
         getSupportActionBar().setTitle("Trip Layout - " + arList.get(0).getTripID());
         getSupportActionBar().setSubtitle(R.string.my_subtitle);
         getSupportActionBar().setIcon(R.mipmap.ic_toolbar);
+
+        header_Title = (AppCompatTextView) findViewById(R.id.header_title);
+
+        SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+        String h_title;
+
+        h_title ="<em>"+ orsAS.getBusType() +"</em>: <strong>"+orsAS.getTripRoute()+"</strong>";
+        //h_title+="<br/><small>Via: <i>" + orsAS.getVia() + "</i></small><br/>";
+        h_title+="<br/>Journey Date & Time: " + output.format(orsAS.getjTime1())+"<br/>";
+        h_title+="Available seats :  " + orsAS.getAvailableSeats();
+        header_Title.setText(Html.fromHtml(h_title));
+        dialog.dismiss();
     }
 
     @Override
@@ -281,17 +306,30 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
             tv_seats_Selected.setText("Total Seats: " + seats_selected + " No. " + selected_seatNos);
 
             TextView tv_fareAmount = (TextView) findViewById(R.id.fareAmount);
+            TextView tv_fareAmount1 = (TextView) findViewById(R.id.fareAmount1);
+            TextView tv_fareAmount2 = (TextView) findViewById(R.id.fareAmount2);
+
             fareAmount = orsAS.getrFare() * seats_Selected;
             rAmount = orsAS.getReservationCharges() * seats_Selected;
             int tAmount = fareAmount + rAmount;
             int rFare = orsAS.getrFare();
             int rAmt = orsAS.getReservationCharges();
+            String fAmount ="", fAmount1="",fAmount2="";
+/*
             String fAmount =""+
                     "Fare Amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs. <font size='4'>" + fareAmount + "</font><br/>"+
                     "Reservation charges &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs. <font size='4'>" + rAmount + "</font><br/>"+
                     "Total Amount to be paid Rs. <font size='4'>" + tAmount + "</font><br/>";
-            fAmount += "<font size='1' color='red'>(Basic Fare Rs." + rFare + " & Reservation charges Rs." + rAmt + " per seat)</font>";
+*/
+            fAmount = "Fare Amount <br/>Reservation charges <br/>Total amount tobe paid";
+            fAmount1 ="₹ &nbsp; <font size='4'>" + fareAmount + "</font><br/>";
+            fAmount1+="₹ &nbsp; <font size='4'>" + rAmount + "</font><br/>";
+            fAmount1+="₹ &nbsp; <font size='4'>" + tAmount + "</font><br/>";
+
+            fAmount2 = "<small><font color='red'>(Basic Fare ₹ &nbsp;" + rFare + " & Reservation charges ₹ &nbsp;" + rAmt + " per seat)</font></small>";
             tv_fareAmount.setText(Html.fromHtml(fAmount));
+            tv_fareAmount1.setText(Html.fromHtml(fAmount1));
+            tv_fareAmount2.setText(Html.fromHtml(fAmount2));
         } else {
             RelativeLayout rl_footer = (RelativeLayout) findViewById(R.id.rl_footer);
             rl_footer.setVisibility(View.INVISIBLE);

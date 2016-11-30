@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
 
     AppCompatTextView header_Title;
     private ProgressDialog dialog;
+    ImageView iv_bus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,11 +152,18 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
         SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
         String h_title;
 
-        h_title ="<em>"+ orsAS.getBusType() +"</em>: <strong>"+orsAS.getTripRoute()+"</strong>";
+        h_title ="<em>"+ orsAS.getBusType() +"</em>: <big><strong>"+orsAS.getTripRoute()+"</strong> </big>";
         //h_title+="<br/><small>Via: <i>" + orsAS.getVia() + "</i></small><br/>";
-        h_title+="<br/>Journey Date & Time: " + output.format(orsAS.getjTime1())+"<br/>";
+        h_title+="<br/>Departure : " + output.format(orsAS.getjTime1())+"<br/>";
         h_title+="Available seats :  " + orsAS.getAvailableSeats();
         header_Title.setText(Html.fromHtml(h_title));
+        iv_bus = (ImageView) findViewById(R.id.iv_bus);
+
+        if (orsAS.getBusType().equals("Volvo")) {
+            iv_bus.setImageResource(R.drawable.bus_volvo);
+        } else {
+            iv_bus.setImageResource(R.drawable.bus_ordinary);
+        }
         dialog.dismiss();
     }
 

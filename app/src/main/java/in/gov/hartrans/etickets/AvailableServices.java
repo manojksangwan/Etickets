@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +35,9 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
     RecyclerView.LayoutManager layoutManager;
     ArrayList<orsAvailableServices> arList = new ArrayList<>();
     ArrayList<orsAvailableServices> asList = new ArrayList<>();
-    AppCompatTextView rCharges;
+    AppCompatTextView header_Title;
     private ProgressDialog dialog;
+    ImageView iv_bus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +138,8 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
         //Log.d("myApp", "ors_availableServices TASK -response  " + orsAS);
         adapter = new orsAvailableServicesAdapter(orsAS);
         arList = orsAS;
-        rCharges = (AppCompatTextView) findViewById(R.id.rCharges);
+        header_Title = (AppCompatTextView) findViewById(R.id.header_title);
+        iv_bus = (ImageView) findViewById(R.id.iv_bus);
 
         String txt="";
         if (!arList.isEmpty())
@@ -150,12 +153,17 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
             recyclerView.setAdapter(adapter);
         }else {
             txt = "<font color='red' size='3'><br/>Not available for online booking.<br/></font>";
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) rCharges.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) header_Title.getLayoutParams();
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-            rCharges.setLayoutParams(layoutParams);
+            header_Title.setLayoutParams(layoutParams);
         }
 
-        rCharges.setText(Html.fromHtml(txt));
+        header_Title.setText(Html.fromHtml(txt));
+        if (arList.get(0).getBusType().equals("Volvo")) {
+            iv_bus.setImageResource(R.drawable.bus_volvo);
+        } else {
+            iv_bus.setImageResource(R.drawable.bus_ordinary);
+        }
         dialog.dismiss();
     }
     @Override

@@ -1,17 +1,24 @@
 package in.gov.hartrans.etickets;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+
+import java.text.SimpleDateFormat;
+
 import in.gov.hartrans.etickets.Models.*;
 
 
@@ -23,6 +30,11 @@ public class PassengerInfo extends AppCompatActivity {
 
     AutoCompleteTextView p_name1, p_name2, p_name3, p_name4, p_age1, p_age2, p_age3, p_age4;
     RadioButton male_pGender1, male_pGender2, male_pGender3, male_pGender4, female_pGender1, female_pGender2, female_pGender3, female_pGender4;
+
+    AppCompatTextView header_Title;
+    private ProgressDialog dialog;
+    ImageView iv_bus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +63,9 @@ public class PassengerInfo extends AppCompatActivity {
         female_pGender3 = (RadioButton) findViewById(R.id.female_pGender3);
         female_pGender4 = (RadioButton) findViewById(R.id.female_pGender4);
 
+        header_Title = (AppCompatTextView) findViewById(R.id.header_title);
+        iv_bus = (ImageView) findViewById(R.id.iv_bus);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +77,24 @@ public class PassengerInfo extends AppCompatActivity {
 
         Intent i = getIntent();
         orsAS = i.getExtras().getParcelable("orsAvailableServices");
+
+        SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+        String h_title;
+
+        h_title ="<em>"+ orsAS.getBusType() +"</em>: <big><strong>"+orsAS.getTripRoute()+"</strong> </big>";
+        //h_title+="<br/><small>Via: <i>" + orsAS.getVia() + "</i></small><br/>";
+        h_title+="<br/>Departure : " + output.format(orsAS.getjTime1())+"<br/>";
+        h_title+="Selected seat(s) :  " + orsAS.getPrfSeats();
+        header_Title.setText(Html.fromHtml(h_title));
+        iv_bus = (ImageView) findViewById(R.id.iv_bus);
+
+        if (orsAS.getBusType().equals("Volvo")) {
+            iv_bus.setImageResource(R.drawable.bus_volvo);
+        } else {
+            iv_bus.setImageResource(R.drawable.bus_ordinary);
+        }
+
+
         til_pname1 = (TextInputLayout)findViewById(R.id.til_p_name1);
         til_pname2 = (TextInputLayout)findViewById(R.id.til_p_name2);
         til_pname3 = (TextInputLayout)findViewById(R.id.til_p_name3);
@@ -95,7 +128,7 @@ public class PassengerInfo extends AppCompatActivity {
         // custom toolbar settings
         Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(my_toolbar);
-        getSupportActionBar().setTitle("Passenger Info");
+        getSupportActionBar().setTitle("Passenger Info - " + orsAS.getTripID());
         getSupportActionBar().setSubtitle(R.string.my_subtitle);
         getSupportActionBar().setIcon(R.mipmap.ic_toolbar);
     }

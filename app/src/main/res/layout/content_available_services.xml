@@ -11,16 +11,35 @@
     tools:context="in.gov.hartrans.etickets.AvailableServices"
     tools:showIn="@layout/activity_available_services">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/rCharges"
+    <LinearLayout
+        android:id="@+id/ll_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12sp"
-        android:layout_marginRight="12sp"
-        android:layout_marginTop="5sp"
-        android:gravity="center"
         android:background="#CCffffff"
-        />
+        android:orientation="horizontal"
+        android:layout_marginLeft="12sp"
+        android:layout_marginRight="12sp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:id="@+id/iv_bus"
+            android:src="@drawable/bus_volvo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5sp"
+            android:layout_gravity="center_vertical"
+            />
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
@@ -28,7 +47,7 @@
         android:layout_marginLeft="12sp"
         android:layout_marginRight="12sp"
         android:layout_marginTop="5sp"
-        android:layout_below="@+id/rCharges"
+        android:layout_below="@+id/ll_header"
     android:id="@+id/recyclerView">
 </android.support.v7.widget.RecyclerView>
 

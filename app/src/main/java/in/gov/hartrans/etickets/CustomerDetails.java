@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,13 +42,16 @@ import in.gov.hartrans.etickets.Models.orsAvailableServices;
 
 public class CustomerDetails extends AppCompatActivity {
     orsAvailableServices orsAS;
-    TextView tv_tripRoute, tv_jTime1;
+
+    AppCompatTextView header_Title;
+    private ProgressDialog dialog;
     ImageView iv_bus;
 
     private static final String TAG = CustomerDetails.class.getSimpleName();
     private WPayInitRequest wPayInitRequest = null;
     private Activity activity = null;
-    private TextView outputView = null;
+    private TextView outputView = null, tv_rFare, tv_rCharges, tv_tFare;
+    private Button bt_pay_cc_dc;
 
     private long amount = 14000;
     private long startTime;
@@ -66,6 +72,10 @@ public class CustomerDetails extends AppCompatActivity {
         activity = this;
 
         outputView = (TextView) findViewById(R.id.tv_tFare);
+        tv_rFare = (TextView) findViewById(R.id.tv_rFare);
+        tv_rCharges = (TextView) findViewById(R.id.tv_rCharges);
+        tv_tFare = (TextView) findViewById(R.id.tv_tFare);
+        bt_pay_cc_dc = (Button) findViewById(R.id.bt_pay_cc_dc);
 
         // Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         // setSupportActionBar(my_toolbar);
@@ -84,23 +94,20 @@ public class CustomerDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        // custom toolbar settings
-        Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(my_toolbar);
-        getSupportActionBar().setTitle("Customer Details");
-        getSupportActionBar().setSubtitle(R.string.my_subtitle);
-        getSupportActionBar().setIcon(R.mipmap.ic_toolbar);
-
-        tv_tripRoute = (TextView) findViewById(R.id.tv_tripRoute);
-        tv_jTime1 = (TextView) findViewById(R.id.tv_jTime1);
+        header_Title = (AppCompatTextView) findViewById(R.id.header_title);
         iv_bus = (ImageView) findViewById(R.id.iv_bus);
 
         Intent i = getIntent();
         orsAS = i.getExtras().getParcelable("orsAvailableServices");
 
-        tv_tripRoute.setText(orsAS.getTripRoute());
-        tv_jTime1.setText("Depart : " + orsAS.getjTime1().toString());
+        SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+        String h_title;
+
+        h_title ="<em>"+ orsAS.getBusType() +"</em>: <big><strong>"+orsAS.getTripRoute()+"</strong> </big>";
+        //h_title+="<br/><small>Via: <i>" + orsAS.getVia() + "</i></small><br/>";
+        h_title+="<br/>Departure : " + output.format(orsAS.getjTime1())+"<br/>";
+        h_title+="Selected seat(s) :  " + orsAS.getPrfSeats();
+        header_Title.setText(Html.fromHtml(h_title));
 
         if (orsAS.getBusType().equals("Volvo")) {
             iv_bus.setImageResource(R.drawable.bus_volvo);
@@ -108,6 +115,17 @@ public class CustomerDetails extends AppCompatActivity {
             iv_bus.setImageResource(R.drawable.bus_ordinary);
         }
 
+        tv_rFare.setText(Html.fromHtml("Basic fare \u20B9 <big>" +orsAS.getrFare()+"</big>"));
+        tv_rCharges.setText(Html.fromHtml("Reservation Charges \u20B9 <big>" +orsAS.getrCharges()+"</big>"));
+        tv_tFare.setText(Html.fromHtml("Total Amount tobe paid \u20B9 <big>" +(orsAS.getrFare()+ orsAS.getrCharges() )+"</big>" ));
+        bt_pay_cc_dc.setText(Html.fromHtml("Proceed to pay \u20B9 <big>" +(orsAS.getrFare()+ orsAS.getrCharges() )+"</big> with CC/DC" ));
+
+        // custom toolbar settings
+        Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(my_toolbar);
+        getSupportActionBar().setTitle("Customer Details-" + orsAS.getTripID());
+        getSupportActionBar().setSubtitle(R.string.my_subtitle);
+        getSupportActionBar().setIcon(R.mipmap.ic_toolbar);
         final Context context = getApplicationContext();
         Thread t = new Thread() {
             public void run() {

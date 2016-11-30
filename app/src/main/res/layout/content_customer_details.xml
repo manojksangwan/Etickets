@@ -10,46 +10,45 @@
     tools:context="in.gov.hartrans.etickets.CustomerDetails"
     tools:showIn="@layout/activity_customer_details">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="50sp"
-        android:id="@+id/iv_bus"
-        android:src="@drawable/bus_volvo"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="5sp"
-     />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/tv_tripRoute"
-        android:layout_toRightOf="@+id/iv_bus"
-        android:layout_marginLeft="10sp"
-        android:textStyle="bold"
-     />
+        android:background="#CCffffff"
+        android:orientation="horizontal"
+        android:layout_marginLeft="12sp"
+        android:layout_marginRight="12sp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:id="@+id/iv_bus"
+            android:src="@drawable/bus_volvo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5sp"
+            android:layout_gravity="center_vertical"
+            />
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            />
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/tv_jTime1"
-        android:layout_below="@+id/tv_tripRoute"
-        android:layout_toRightOf="@+id/iv_bus"
-        android:layout_marginLeft="10sp"
-        android:textStyle="italic"
-        />
     <LinearLayout
         android:id="@+id/customerDetail_form_LL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="5sp"
-        android:layout_below="@+id/iv_bus">
+        android:background="#CCffffff"
+
+        android:layout_below="@+id/ll_header">
 
 
     <TextView
@@ -155,26 +154,26 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Reservation Charges \u20B9"
         android:layout_marginLeft="15sp"
-        android:id="@+id/tv_rCharges"
-/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Total Fare \u20B9"
-        android:layout_marginLeft="15sp"
-        android:id="@+id/tv_tFare"/>
+        android:id="@+id/tv_rCharges"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Total Amount tobe paid \u20B9"
+            android:layout_marginLeft="15sp"
+            android:layout_marginBottom="10sp"
+            android:id="@+id/tv_tFare"/>
+    </LinearLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" Proceed to pay \u20B9 "
-        android:layout_marginLeft="15sp"
-        android:id="@+id/button"
-        android:layout_gravity="center_horizontal"
-        android:background="#558800"
+        android:id="@+id/bt_pay_cc_dc"
+        android:background="@drawable/rounded_corner_box"
+        android:layout_below="@+id/customerDetail_form_LL"
         android:textColor="#ffffff"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"
         />
-    </LinearLayout>
 
 </RelativeLayout>

@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:text="IAP Payment" />
+            android:text="UPI Payment" />
 
         <TextView
             android:id="@+id/title_3"
@@ -55,7 +55,9 @@
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:scaleType="centerInside"/>
+            android:background="@drawable/rounded_corner_box"
+            android:scaleType="centerInside"
+            />
 
 
         <TextView

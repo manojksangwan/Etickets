@@ -33,24 +33,30 @@
         <activity
             android:name=".AvailableServices"
             android:label="@string/title_activity_available_services"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".TripLayout"
             android:label="@string/title_activity_trip_layout"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".PassengerInfo"
             android:label="@string/title_activity_passenger_info"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".CustomerDetails"
             android:label="@string/title_activity_customer_details"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".TestPayment"
             android:label="@string/title_activity_test_payment"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".WebShell"></activity>
+        <activity android:name=".WebShellActivity"></activity>
     </application>
 
 </manifest>

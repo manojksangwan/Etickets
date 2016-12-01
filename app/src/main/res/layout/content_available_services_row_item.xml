@@ -13,12 +13,14 @@
         android:gravity="center_vertical"
         android:layout_marginLeft="12sp"
         android:id="@+id/tripRoute"
+        android:textColor="#000000"
         android:text="sangwan"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="manojK."
+        android:textColor="#000000"
         android:textSize="12sp"
         android:textStyle="bold"
         android:gravity="center_vertical"

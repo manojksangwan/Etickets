@@ -44,10 +44,10 @@ public class TestPayment extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("mid", "HDFC000000000044");
         bundle.putString("merchantKey", "7c448fb4c6eb425e86f8817ae5488533");
-        bundle.putString("merchantTxnID", "123456789143");
-        bundle.putString("transactionDesc", "pnr123456143");
+        bundle.putString("merchantTxnID", "123456789144");
+        bundle.putString("transactionDesc", "pnr123456144");
         bundle.putString("currency", "INR");
-        bundle.putString("appName", "in.gov.hartrans.testupi");
+        bundle.putString("appName", "in.gov.hartrans.etickets");
         bundle.putString("paymentType", "P2M");
         bundle.putString("transactionType", "COLLECT");
         bundle.putString("payeePayAddress", "");

@@ -86,10 +86,6 @@ public class CustomerDetails extends AppCompatActivity {
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 //reset
-                wPayInitRequest = null;
-                wPayResponse = null;
-
-                //processPayWithWibmo();
                 Intent intent = new Intent(CustomerDetails.this, TestPayment.class);
                 startActivity(intent);
             }
@@ -142,6 +138,17 @@ public class CustomerDetails extends AppCompatActivity {
             }
         };
         t.start();
+
+        bt_pay_cc_dc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wPayInitRequest = null;
+                wPayResponse = null;
+
+                processPayWithWibmo();
+            }
+        });
+
     }
 
     private void processPayWithWibmo() {

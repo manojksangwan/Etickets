@@ -3,8 +3,8 @@
     <dimen name="activity_horizontal_margin">16sp</dimen>
     <dimen name="activity_vertical_margin">16sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="bus_height">40sp</dimen>
-    <dimen name="bus_width">75sp</dimen>
-    <dimen name="busType_text_size_spinner">15sp</dimen>
-    <dimen name="busType_text_size1_spinner">12sp</dimen>
+    <dimen name="bus_height">20sp</dimen>
+    <dimen name="bus_width">40sp</dimen>
+    <dimen name="busType_text_size_spinner">10sp</dimen>
+    <dimen name="busType_text_size1_spinner">8sp</dimen>
 </resources>

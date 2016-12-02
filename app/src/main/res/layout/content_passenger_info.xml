@@ -65,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/til_p_name1"
+                app:hintTextAppearance="@style/hint_TextLabel_size"
                 android:textColorHint="#000">
                 <AutoCompleteTextView
                     android:id="@+id/p_name1"
@@ -95,11 +96,10 @@
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:id="@+id/p_gender1"
                 android:layout_below="@+id/til_p_name1"
                 android:layout_toRightOf="@+id/til_p_age1"
-                android:layout_marginTop="17sp"
                 android:layout_marginLeft="25sp"
                 >
                 <RadioButton android:id="@+id/male_pGender1"
@@ -110,7 +110,7 @@
                     android:text="Female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20sp"/>
+                    />
             </RadioGroup>
             </RelativeLayout>
 <!-- Passenger info SEAT 2 -->

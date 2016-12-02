@@ -5,6 +5,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="bus_height">40sp</dimen>
     <dimen name="bus_width">75sp</dimen>
-    <dimen name="busType_text_size_spinner">15sp</dimen>
-    <dimen name="busType_text_size1_spinner">12sp</dimen>
+    <dimen name="busType_text_size_spinner">20sp</dimen>
+    <dimen name="busType_text_size1_spinner">15sp</dimen>
 </resources>

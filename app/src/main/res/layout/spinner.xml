@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="75sp"
-        android:layout_height="40sp"
+        android:layout_width="@dimen/bus_width"
+        android:layout_height="@dimen/bus_height"
         android:layout_marginLeft="5sp"
         android:layout_centerVertical="true"
         android:background="@drawable/bus_volvo" />

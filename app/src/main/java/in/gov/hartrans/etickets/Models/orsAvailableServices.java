@@ -14,7 +14,7 @@ public class orsAvailableServices implements Parcelable {
 
     String prfSeats, pName, pPhone, pEmail, iProof, pName1, pName2, pName3, pName4, pGender1, pGender2, pGender3, pGender4;
     int tSeats, pSeat1, pSeat2, pSeat3, pSeat4, totalFare, rCharges, pAge1, pAge2, pAge3, pAge4;
-
+    String secureCode;
     public orsAvailableServices(int trip_srno, int ID, int onlineSeats, int rKMS, int rFare, int depotID, int reservationCharges, int rTripID, int tripID, int totalSeats, int availableSeats, int closeTime, String busType, String tripCode, String leaving, String departing, String via, String rDesc, String boarding, String plateform, String dropping, String tripRoute, String depotShortName, Date jTime1) {
         this.setTrip_srno(trip_srno);
         this.setID(ID);
@@ -92,6 +92,7 @@ public class orsAvailableServices implements Parcelable {
         pPhone = in.readString();
         pEmail = in.readString();
         iProof = in.readString();
+        secureCode = in.readString();
     }
 
     public static final Creator<orsAvailableServices> CREATOR = new Creator<orsAvailableServices>() {
@@ -489,6 +490,12 @@ public class orsAvailableServices implements Parcelable {
     public void setpAge4(int pAge4) {
         this.pAge4 = pAge4;
     }
+    public String getSecureCode() {
+        return secureCode;
+    }
+    public void setSecureCode(String secureCode) {
+        this.secureCode = secureCode;
+    }
 
     @Override
     public int describeContents() {
@@ -546,5 +553,6 @@ public class orsAvailableServices implements Parcelable {
         dest.writeString(pPhone);
         dest.writeString(pEmail);
         dest.writeString(iProof);
+        dest.writeString(secureCode);
     }
 }

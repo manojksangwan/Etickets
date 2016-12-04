@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -23,8 +24,14 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import in.gov.hartrans.etickets.Models.*;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
 
 public class TripLayout extends AppCompatActivity implements orsTripLayout_iResult, orsTripLayoutAdapter.ItemClickCallback {
     RecyclerView recyclerView;
@@ -98,9 +105,19 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
                 orsAS.setTotalFare(fareAmount);
                 orsAS.setrCharges(rAmount);
 
+
+                Date dt = new Date();
+                SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+                String secureCode = df.format(dt.getTime());
+
+                String ip_address = getLocalIpAddress();
+                Toast.makeText(TripLayout.this, "SecureCode: " + secureCode + "   ipAddress : " + ip_address, Toast.LENGTH_SHORT).show();
+
+                /*
                 Intent intent = new Intent(TripLayout.this, PassengerInfo.class);
                 intent.putExtra("orsAvailableServices", orsAS);
                 startActivity(intent);
+                */
             }
         });
     }
@@ -343,5 +360,22 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
             RelativeLayout rl_footer = (RelativeLayout) findViewById(R.id.rl_footer);
             rl_footer.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
+                        return inetAddress.getHostAddress();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 }

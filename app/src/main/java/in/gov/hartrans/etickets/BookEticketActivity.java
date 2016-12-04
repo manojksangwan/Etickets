@@ -38,7 +38,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class BookEticketActivity extends AppCompatActivity {
-
     IResult mResultCallback = null;
     VolleyService mVolleyService;
 
@@ -61,14 +60,16 @@ public class BookEticketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_eticket);
 
+        if (!appStatus.getInstance(this).isOnline()) {
+            Toast.makeText(this, "Internet connection not available.", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
+
         dialog = ProgressDialog.show(this, "", "Please wait", true);
         dialog.setInverseBackgroundForced(true);
         dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
-
-        if (!appStatus.getInstance(this).isOnline()) {
-            Toast.makeText(this, "Internet connection not available..", Toast.LENGTH_LONG).show();
-            finish();
-        }
 
         initVolleyCallback();
         mVolleyService = new VolleyService(mResultCallback, this);

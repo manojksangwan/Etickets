@@ -15,16 +15,15 @@
     <ScrollView
         android:id="@+id/book_eTicket_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-
             android:orientation="vertical">
 
             <TableLayout
@@ -33,8 +32,7 @@
                 android:background="#ff9999"
                 android:alpha=".8"
                 android:stretchColumns="*"
-                android:layout_marginTop="20sp"
-                >
+                android:layout_marginTop="20sp">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -46,7 +44,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Bus Type"
-                        android:textSize="12sp"
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:paddingLeft="10sp"
@@ -72,7 +69,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Leaving from"
-                        android:textSize="12sp"
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:paddingLeft="10sp"
@@ -98,7 +94,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Departing to"
-                        android:textSize="12sp"
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:paddingLeft="10sp"
@@ -126,7 +121,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Departure date"
-                        android:textSize="12sp"
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:paddingLeft="10sp"
@@ -161,109 +155,109 @@
 
 
 
-        <LinearLayout
-            android:id="@+id/ll_info"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#CCffffff"
-            android:textColor="#fc0101"
-            android:layout_marginTop="15sp"
-            android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/ll_info"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/bullet1"
-                    android:textStyle="bold"
-                    android:layout_width="20sp"
-                    android:gravity="center"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:text="1"
-                    android:textSize="12sp" />
-                <TextView
-                    android:id="@+id/bullet1Text"
-                    android:layout_width="wrap_content"
+                android:background="#CCffffff"
+                android:textColor="#fc0101"
+                android:layout_marginTop="15sp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@string/prompt_info_query1"
-                    android:textColor="#fc0101"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/bullet1"
+                        android:textStyle="bold"
+                        android:layout_width="20sp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:paddingRight="5dp"
+                        android:text="1"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/bullet1Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@string/prompt_info_query1"
+                        android:textColor="#fc0101"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/bullet2"
-                    android:textStyle="bold"
-                    android:layout_width="20sp"
-                    android:gravity="center"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:text="2"
-                    android:textSize="12sp" />
-                <TextView
-                    android:id="@+id/bullet2Text"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@string/prompt_info_query2"
-                    android:textColor="#fc0101"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/bullet2"
+                        android:textStyle="bold"
+                        android:layout_width="20sp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:paddingRight="5dp"
+                        android:text="2"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/bullet2Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@string/prompt_info_query2"
+                        android:textColor="#fc0101"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/bullet3"
-                    android:textStyle="bold"
-                    android:layout_width="20sp"
-                    android:gravity="center"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:text="3"
-                    android:textSize="12sp" />
-                <TextView
-                    android:id="@+id/bullet3Text"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@string/prompt_info_query3"
-                    android:textColor="#fc0101"
-                    android:textSize="12sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/bullet4"
-                    android:textStyle="bold"
-                    android:layout_width="20sp"
-                    android:gravity="center"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:text="4"
-                    android:textSize="12sp" />
-                <TextView
-                    android:id="@+id/bullet4Text"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/bullet3"
+                        android:textStyle="bold"
+                        android:layout_width="20sp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:paddingRight="5dp"
+                        android:text="3"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/bullet3Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@string/prompt_info_query3"
+                        android:textColor="#fc0101"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@string/prompt_info_query4"
-                    android:textColor="#fc0101"
-                    android:textSize="12sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bullet4"
+                        android:textStyle="bold"
+                        android:layout_width="20sp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:paddingRight="5dp"
+                        android:text="4"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/bullet4Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@string/prompt_info_query4"
+                        android:textColor="#fc0101"
+                        android:textSize="12sp" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

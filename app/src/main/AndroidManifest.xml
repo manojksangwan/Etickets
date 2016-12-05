@@ -5,11 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <supports-screens android:smallScreens="false"
-        android:normalScreens="false"
+    <supports-screens
         android:largeScreens="false"
-        android:xlargeScreens="true"
-        android:requiresSmallestWidthDp="1024" />
+        android:normalScreens="false"
+        android:requiresSmallestWidthDp="1024"
+        android:smallScreens="false"
+        android:xlargeScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -39,9 +40,8 @@
         <activity
             android:name=".AvailableServices"
             android:label="@string/title_activity_available_services"
-            android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".TripLayout"
             android:label="@string/title_activity_trip_layout"
@@ -62,7 +62,11 @@
             android:label="@string/title_activity_test_payment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".WebShellActivity"></activity>
+        <activity android:name=".WebShellActivity" />
+        <activity
+            android:name=".PaywithPayzapp"
+            android:label="@string/title_activity_paywith_payzapp"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

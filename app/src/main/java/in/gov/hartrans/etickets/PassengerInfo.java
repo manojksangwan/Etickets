@@ -284,6 +284,7 @@ public class PassengerInfo extends AppCompatActivity {
             Intent intent = new Intent(PassengerInfo.this, CustomerDetails.class);
             intent.putExtra("orsAvailableServices", orsAS);
             startActivity(intent);
+            finish();
         }
     }
     private boolean isAgeValid(String pAge) {

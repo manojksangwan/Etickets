@@ -165,6 +165,7 @@ public class BookEticketActivity extends AppCompatActivity {
                     Intent intent = new Intent(BookEticketActivity.this, AvailableServices.class);
                     intent.putExtra("orsAvailableServicesSearch", orsASS);
                     startActivity(intent);
+
                 } else {
                     Toast.makeText(getApplicationContext(), toastString, Toast.LENGTH_SHORT).show();
                 }

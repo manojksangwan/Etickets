@@ -312,6 +312,7 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
                     int pid = android.os.Process.myPid();
                     android.os.Process.killProcess(pid);
                     System.exit(0);
+                    finishAffinity();
                 }
             });
             /*

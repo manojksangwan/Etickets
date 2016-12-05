@@ -109,6 +109,7 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
                         //intent.putExtra("orsTripLayoutSearch", orsTLS);
                         intent.putExtra("orsAvailableServices", arList.get(position));
                         startActivity(intent);
+                        finish();
                     }
 
                     @Override

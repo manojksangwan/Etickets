@@ -402,6 +402,7 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
             Intent intent = new Intent(TripLayout.this, PassengerInfo.class);
             intent.putExtra("orsAvailableServices", orsAS);
             startActivity(intent);
+            finish();
         }
     }
 }

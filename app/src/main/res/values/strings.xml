@@ -65,6 +65,7 @@
 
         <string name="title_activity_button">Button Options</string>
         <string name="title_activity_web_shell">Web Shell Sample</string>
+    <string name="ok">OK</string>
 
 
 </resources>

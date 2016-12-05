@@ -33,7 +33,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 
-public class TripLayout extends AppCompatActivity implements orsTripLayout_iResult, orsTripLayoutAdapter.ItemClickCallback {
+public class TripLayout extends AppCompatActivity implements orsTripLayout_iResult,
+        orsTripLayoutAdapter.ItemClickCallback,
+        eTicketInfoUpdate_iResult {
     RecyclerView recyclerView;
     //RecyclerView.Adapter adapter;
     orsTripLayoutAdapter adapter;
@@ -104,14 +106,20 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
                 orsAS.setpSeat4(pSeat4);
                 orsAS.setTotalFare(fareAmount);
                 orsAS.setrCharges(rAmount);
+                orsAS.setSecureCode("NEW");
 
+                eTicketInfoUpdateTask et_Task = new eTicketInfoUpdateTask(TripLayout.this);
+                et_Task.eTicketInfo_update(orsAS, "TicketInfo");
 
+                /*
                 Date dt = new Date();
                 SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
                 String secureCode = df.format(dt.getTime());
 
                 String ip_address = getLocalIpAddress();
                 Toast.makeText(TripLayout.this, "SecureCode: " + secureCode + "   ipAddress : " + ip_address, Toast.LENGTH_SHORT).show();
+                */
+
 
                 /*
                 Intent intent = new Intent(TripLayout.this, PassengerInfo.class);
@@ -377,5 +385,23 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
             ex.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void notify_eTicketInfoUpdate_Error(VolleyError error) {
+        Toast.makeText(TripLayout.this, error.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void notify_eTicketInfoUpdate_Success(boolean DidError, String ErrorMessage) {
+        if (DidError){
+            Toast.makeText(TripLayout.this, ErrorMessage, Toast.LENGTH_SHORT).show();
+        }else {
+
+            orsAS.setSecureCode(ErrorMessage);
+            Intent intent = new Intent(TripLayout.this, PassengerInfo.class);
+            intent.putExtra("orsAvailableServices", orsAS);
+            startActivity(intent);
+        }
     }
 }

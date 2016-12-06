@@ -48,11 +48,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
+            android:windowSoftInputMode="stateVisible|adjustResize"
             android:name=".PassengerInfo"
             android:label="@string/title_activity_passenger_info"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".CustomerDetails"
             android:label="@string/title_activity_customer_details"
             android:screenOrientation="portrait"

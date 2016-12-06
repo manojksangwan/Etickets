@@ -66,6 +66,11 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_details);
 
+        dialog = ProgressDialog.show(this, "", "Please wait", true);
+        dialog.setInverseBackgroundForced(true);
+        dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
+
+
 
         tv_rFare = (TextView) findViewById(R.id.tv_rFare);
         tv_rCharges = (TextView) findViewById(R.id.tv_rCharges);
@@ -125,11 +130,14 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         getSupportActionBar().setSubtitle(R.string.my_subtitle);
         getSupportActionBar().setIcon(R.mipmap.ic_toolbar);
 
+        if(dialog.isShowing())
+        {
+            dialog.dismiss();
+        }
 
         bt_pay_cc_dc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 paywith_cc_dc();
             }
         });
@@ -193,6 +201,7 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
             // mAuthTask = new UserLoginTask(email, mobile_no, password);
 
             // mAuthTask.execute((Void) null);
+            dialog.show();
             orsAS.setpName(pName);
             orsAS.setpEmail(pEmail);
             orsAS.setpPhone(pPhone);
@@ -206,6 +215,7 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
     @Override
     public void notify_eTicketInfoUpdate_Error(VolleyError error) {
         Toast.makeText(CustomerDetails.this, error.toString(), Toast.LENGTH_SHORT).show();
+        dialog.dismiss();
     }
 
     @Override
@@ -219,5 +229,6 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
             startActivity(intent);
             finish();
         }
+        dialog.dismiss();
     }
 }

@@ -97,7 +97,7 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
         bt_book_eTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dialog.show();
                 orsAS.setPrfSeats(selected_seatNo.toString());
                 orsAS.settSeats(seats_selected);
                 orsAS.setpSeat1(pSeat1);
@@ -389,15 +389,17 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
 
     @Override
     public void notify_eTicketInfoUpdate_Error(VolleyError error) {
+        dialog.dismiss();
         Toast.makeText(TripLayout.this, error.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void notify_eTicketInfoUpdate_Success(boolean DidError, String ErrorMessage) {
         if (DidError){
+            dialog.dismiss();
             Toast.makeText(TripLayout.this, ErrorMessage, Toast.LENGTH_SHORT).show();
         }else {
-
+            dialog.dismiss();
             orsAS.setSecureCode(ErrorMessage);
             Intent intent = new Intent(TripLayout.this, PassengerInfo.class);
             intent.putExtra("orsAvailableServices", orsAS);

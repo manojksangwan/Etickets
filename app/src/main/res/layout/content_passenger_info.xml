@@ -73,8 +73,11 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_p_name1"
                     android:inputType="text"
+                    android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                <requestFocus />
+                </AutoCompleteTextView>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -88,9 +91,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
+                    android:imeOptions="actionNext"
                     android:inputType="textPhonetic"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                    <requestFocus />
+                </AutoCompleteTextView>
+
             </android.support.design.widget.TextInputLayout>
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -100,18 +107,22 @@
                 android:id="@+id/p_gender1"
                 android:layout_below="@+id/til_p_name1"
                 android:layout_toRightOf="@+id/til_p_age1"
-                android:layout_marginLeft="25sp"
-                >
+                android:layout_marginLeft="25sp">
                 <RadioButton android:id="@+id/male_pGender1"
                     android:text="Male"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:imeOptions="actionNext"
+                    android:layout_height="wrap_content" >
+                    <requestFocus />
+                </RadioButton>
                 <RadioButton android:id="@+id/female_pGender1"
                     android:text="Female"
+                    android:imeOptions="actionNext"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-            </RadioGroup>
+                    android:layout_height="wrap_content">
+                <requestFocus />
+            </RadioButton>
+                </RadioGroup>
             </RelativeLayout>
 <!-- Passenger info SEAT 2 -->
             <RelativeLayout
@@ -132,8 +143,11 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="Passenger Name - 2"
+                    android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                    <requestFocus />
+                    </AutoCompleteTextView>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -149,8 +163,11 @@
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
                     android:inputType="textPhonetic"
+                    android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                    <requestFocus />
+                </AutoCompleteTextView>
             </android.support.design.widget.TextInputLayout>
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"
@@ -163,13 +180,19 @@
                     android:layout_marginLeft="25sp">
                     <RadioButton android:id="@+id/male_pGender2"
                         android:text="Male"
+                        android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+                        <requestFocus />
+                        </RadioButton>
                     <RadioButton android:id="@+id/female_pGender2"
                         android:text="Female"
+                        android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20sp"/>
+                        android:layout_marginLeft="20sp">
+                        <requestFocus />
+                        </RadioButton>
                 </RadioGroup>
             </RelativeLayout>
 <!-- Passenger info SEAT 3 -->
@@ -186,12 +209,15 @@
                 android:id="@+id/til_p_name3">
                 <AutoCompleteTextView
                     android:id="@+id/p_name3"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="Passenger Name - 3"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                    <requestFocus />
+                    </AutoCompleteTextView>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -202,12 +228,15 @@
                 android:layout_below="@+id/til_p_name3">
                 <AutoCompleteTextView
                     android:id="@+id/p_age3"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
                     android:inputType="textPhonetic"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                    <requestFocus />
+                    </AutoCompleteTextView>
             </android.support.design.widget.TextInputLayout>
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"
@@ -220,13 +249,19 @@
                     android:layout_marginLeft="25sp">
                     <RadioButton android:id="@+id/male_pGender3"
                         android:text="Male"
+                        android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+                        <requestFocus />
+                        </RadioButton>
                     <RadioButton android:id="@+id/female_pGender3"
                         android:text="Female"
+                        android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20sp"/>
+                        android:layout_marginLeft="20sp">
+                        <requestFocus />
+                        </RadioButton>
                 </RadioGroup>
             </RelativeLayout>
 <!-- Passenger info SEAT 4 -->
@@ -243,12 +278,15 @@
                 android:id="@+id/til_p_name4">
                 <AutoCompleteTextView
                     android:id="@+id/p_name4"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="Passenger Name - 4"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                    <requestFocus />
+                    </AutoCompleteTextView>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -259,12 +297,15 @@
                 android:layout_below="@+id/til_p_name4">
                 <AutoCompleteTextView
                     android:id="@+id/p_age4"
+                    android:imeOptions="actionNext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
                     android:inputType="textPhonetic"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true" >
+                    <requestFocus />
+                    </AutoCompleteTextView>
             </android.support.design.widget.TextInputLayout>
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"
@@ -277,13 +318,19 @@
                     android:layout_marginLeft="25sp">
                     <RadioButton android:id="@+id/male_pGender4"
                         android:text="Male"
+                        android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+                        <requestFocus />
+                        </RadioButton>
                     <RadioButton android:id="@+id/female_pGender4"
                         android:text="Female"
+                        android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20sp"/>
+                        android:layout_marginLeft="20sp">
+                        <requestFocus />
+                        </RadioButton>
                 </RadioGroup>
             </RelativeLayout>
         </LinearLayout>

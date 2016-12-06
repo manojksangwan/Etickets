@@ -12,8 +12,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,18 +54,27 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
     private static final TimeZone UTC = new SimpleTimeZone(0, "UTC");
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
     private TextView outputView = null;
+    private Button bt_retry=null;
 
     StringBuilder sb = new StringBuilder();
+    private ProgressDialog dialog;
 
+    private boolean proceedtoPay=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paywith_payzapp);
 
+        dialog = ProgressDialog.show(this, "", "Please wait", true);
+        dialog.setInverseBackgroundForced(true);
+        dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
+        dialog.show();
         Intent i = getIntent();
         orsAS = i.getExtras().getParcelable("orsAvailableServices");
         activity = this;
         outputView = (TextView) findViewById(R.id.tv_output);
+        bt_retry = (Button) findViewById(R.id.bt_retry);
+        bt_retry.setVisibility(View.INVISIBLE);
 
         // custom toolbar settings
         Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -90,9 +101,33 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
         };
         t.start();
 
-        wPayInitRequest = null;
-        wPayResponse = null;
-        processPayWithWibmo();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+
+        }
+
+        dialog.dismiss();
+
+        if (proceedtoPay) {
+            proceedtoPay=false;
+            wPayInitRequest = null;
+            wPayResponse = null;
+            processPayWithWibmo();
+        }
+        bt_retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_retry.setVisibility(View.INVISIBLE);
+                outputView.setText("please wait...");
+                sb.setLength(0);
+
+                proceedtoPay=false;
+                wPayInitRequest = null;
+                wPayResponse = null;
+                processPayWithWibmo();
+            }
+        });
     }
 
     private void processPayWithWibmo() {
@@ -191,32 +226,33 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
 
 
             if (resultCode == RESULT_OK) {
+                sb.setLength(0);
 
                 wPayResponse = WibmoSDK.processInAppResponseWPay(data);
-                Log.i(TAG, "resCode: " + wPayResponse.getResCode() +
-                        "; ResDesc: " + wPayResponse.getResDesc());
+                //Log.i(TAG, "resCode: " + wPayResponse.getResCode() +"; ResDesc: " + wPayResponse.getResDesc());
 
-                sb.append("resCode: " + wPayResponse.getResCode()).append("\n");
-                sb.append("resDesc: " + wPayResponse.getResDesc()).append("\n");
+                //sb.append("resCode: " + wPayResponse.getResCode()).append("\n");
+                sb.append("<font color='green'><big><b>Payment received successfully<b/></big></font><br/>");
 
                 //success;
                 String wPayTxnId = wPayResponse.getWibmoTxnId();
-                sb.append("wPayTxnId: " + wPayTxnId).append("\n");
+                sb.append("Transaction ID : <b>" + wPayTxnId).append("</b><br/>");
 
                 String merAppData = wPayResponse.getMerAppData();
-                sb.append("merAppData: " + merAppData).append("\n");
+                //sb.append("merAppData: " + merAppData).append("\n");
 
                 String merTxnId = wPayResponse.getMerTxnId();
-                sb.append("merTxnId: " + merTxnId).append("\n");
+                //sb.append("merTxnId: " + merTxnId).append("\n");
 
                 String msgHash = wPayResponse.getMsgHash();
-                sb.append("msgHash: " + msgHash).append("\n");
+                //sb.append("msgHash: " + msgHash).append("\n");
 
                 String dataPickUpCode = wPayResponse.getDataPickUpCode();
-                sb.append("dataPickUpCode: " + dataPickUpCode).append("\n");
+                //sb.append("dataPickUpCode: " + dataPickUpCode).append("\n");
 
                 if (wPayResponse.getResCode().equals("000"))
                 {
+                    sb.append("<font color='red'>eTicket Booked successfully</font><br/><small>eTicket details will be sent through email & sms.</small>").append("<br/>");
                     wibmoResponse wr = new wibmoResponse(
                             wPayResponse.getResCode(),
                             wPayResponse.getResDesc(),
@@ -235,17 +271,17 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
                     String resDesc = data.getStringExtra("ResDesc");
                     Log.i(TAG, "resCode: " + resCode + "; ResDesc: " + resDesc);
                     //failed .. more data at resDesc
-
                     sb.append("resCode: " + resCode).append("\n");
                     sb.append("resDesc: " + resDesc).append("\n");
+                    bt_retry.setVisibility(View.VISIBLE);
                 } else {
-                    //failed
+                    finish();
                 }
             }//result not ok
 
             //sb.append("\nTime: "+timeDiff).append(" ms").append("\n");
             sb.append("\nTime: " + timeDiff / 1000).append(" sec").append("\n");
-
+            outputView.setText(sb.toString());
             /*
             AlertDialog.Builder builder = new AlertDialog.Builder(PaywithPayzapp.this);
             builder.setMessage(sb.toString())
@@ -306,6 +342,8 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
                         "We had an error, please try after sometime",
                         Toast.LENGTH_LONG);
                 toast.show();
+                outputView.setText("We had an error, please try after sometime");
+                bt_retry.setVisibility(View.VISIBLE);
             } else {
                 if (wPayInitRequest != null) {
                     startTime = System.currentTimeMillis();
@@ -446,17 +484,28 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
     }
     @Override
     public void notify_eTicketInfoUpdate_Error(VolleyError error) {
-        Log.d("myApp", "HR Server Response" + error.toString());
+        //Log.d("myApp", "HR Server Response" + error.toString());
         Toast.makeText(PaywithPayzapp.this, error.toString(), Toast.LENGTH_SHORT).show();
+        outputView.setText(Html.fromHtml(sb.toString()));
     }
 
     @Override
     public void notify_eTicketInfoUpdate_Success(boolean DidError, String ErrorMessage) {
         if (DidError){
-            Log.d("myApp", "HR Server Response" + ErrorMessage);
+            //Log.d("myApp", "HR Server Response" + ErrorMessage);
             Toast.makeText(PaywithPayzapp.this, ErrorMessage, Toast.LENGTH_SHORT).show();
+            outputView.setText(Html.fromHtml(sb.toString()));
         }else {
-            outputView.setText(sb.toString());
+            outputView.setText(Html.fromHtml(sb.toString()));
         }
+/*
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+
+        }
+        finish();
+*/
+        proceedtoPay=false;
     }
 }

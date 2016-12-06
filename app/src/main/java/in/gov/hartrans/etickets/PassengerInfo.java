@@ -281,6 +281,7 @@ public class PassengerInfo extends AppCompatActivity {
             orsAS.setpGender3(male_pGender3.isChecked()?"M": (female_pGender3.isChecked()?"F":""));
             orsAS.setpGender4(male_pGender4.isChecked()?"M": (female_pGender4.isChecked()?"F":""));
 
+            //dialog.dismiss();
             Intent intent = new Intent(PassengerInfo.this, CustomerDetails.class);
             intent.putExtra("orsAvailableServices", orsAS);
             startActivity(intent);

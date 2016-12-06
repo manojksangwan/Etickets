@@ -33,7 +33,7 @@ public class orsAvailableServicesTask implements Serializable {
     myIResult iResult;
     Context context;
     ArrayList<orsAvailableServices> arList = new ArrayList<>();
-    String json_url = "http://hartrans.gov.in/ors/api/orsAvailableServices";
+    String json_url = "http://hrtransport.in/ors/api/orsAvailableServices";
 
     public orsAvailableServicesTask(Context context)
     {

@@ -53,14 +53,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#ffbb"
             android:padding="1sp">
-<!-- Passenger info SEAT 1 -->
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/passenger1"
-                android:background="#fff">
+                android:background="#CCffffff">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,10 +102,11 @@
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:id="@+id/p_gender1"
                 android:layout_below="@+id/til_p_name1"
                 android:layout_toRightOf="@+id/til_p_age1"
+                android:layout_marginTop="17sp"
                 android:layout_marginLeft="25sp">
                 <RadioButton android:id="@+id/male_pGender1"
                     android:text="Male"
@@ -124,12 +124,12 @@
             </RadioButton>
                 </RadioGroup>
             </RelativeLayout>
-<!-- Passenger info SEAT 2 -->
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/passenger2"
-                android:background="#fff"
+                android:background="#CCffffff"
                 android:layout_marginTop="3sp">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -189,18 +189,17 @@
                         android:text="Female"
                         android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20sp">
+                        android:layout_height="wrap_content">
                         <requestFocus />
                         </RadioButton>
                 </RadioGroup>
             </RelativeLayout>
-<!-- Passenger info SEAT 3 -->
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/passenger3"
-                android:background="#fff"
+                android:background="#CCffffff"
                 android:layout_marginTop="3sp">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -258,18 +257,17 @@
                         android:text="Female"
                         android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20sp">
+                        android:layout_height="wrap_content">
                         <requestFocus />
                         </RadioButton>
                 </RadioGroup>
             </RelativeLayout>
-<!-- Passenger info SEAT 4 -->
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/passenger4"
-                android:background="#fff"
+                android:background="#CCffffff"
                 android:layout_marginTop="3sp">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -327,8 +325,7 @@
                         android:text="Female"
                         android:imeOptions="actionNext"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20sp">
+                        android:layout_height="wrap_content">
                         <requestFocus />
                         </RadioButton>
                 </RadioGroup>

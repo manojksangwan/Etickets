@@ -13,6 +13,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -35,6 +36,7 @@ public class PassengerInfo extends AppCompatActivity {
     private ProgressDialog dialog;
     ImageView iv_bus;
 
+    private Button bt_continue=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class PassengerInfo extends AppCompatActivity {
         // Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         // setSupportActionBar(toolbar);
 
+        bt_continue=(Button) findViewById(R.id.bt_continue);
         p_name1 = (AutoCompleteTextView) findViewById(R.id.p_name1);
         p_name2 = (AutoCompleteTextView) findViewById(R.id.p_name2);
         p_name3 = (AutoCompleteTextView) findViewById(R.id.p_name3);
@@ -74,7 +77,13 @@ public class PassengerInfo extends AppCompatActivity {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
-
+        bt_continue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addPassengerInfo();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        });
         Intent i = getIntent();
         orsAS = i.getExtras().getParcelable("orsAvailableServices");
 

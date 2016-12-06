@@ -31,6 +31,19 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:imeOptions="actionDone"
+        android:visibility="gone"
         android:src="@android:drawable/ic_input_add" />
 
+        <Button
+            android:layout_marginTop="15sp"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:id="@+id/bt_continue"
+            android:layout_below="@+id/tv_output"
+            android:background="@drawable/rounded_corner_box"
+            android:textColor="#ffffff"
+            android:imeOptions="actionDone"
+            android:layout_gravity="bottom|center_horizontal"
+             />
 </android.support.design.widget.CoordinatorLayout>

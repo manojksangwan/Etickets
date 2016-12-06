@@ -171,10 +171,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/customerDetail_form_LL"
         android:text=" Proceed to pay \u20B9 "
         android:id="@+id/bt_pay_cc_dc"
         android:background="@drawable/rounded_corner_box"
-        android:layout_below="@+id/customerDetail_form_LL"
         android:textColor="#ffffff"
         android:layout_centerHorizontal="true"
         />

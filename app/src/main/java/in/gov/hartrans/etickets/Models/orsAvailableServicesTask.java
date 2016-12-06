@@ -1,6 +1,5 @@
 package in.gov.hartrans.etickets.Models;
 
-
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;

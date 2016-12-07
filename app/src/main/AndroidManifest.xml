@@ -48,17 +48,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:windowSoftInputMode="stateVisible|adjustResize"
             android:name=".PassengerInfo"
             android:label="@string/title_activity_passenger_info"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".CustomerDetails"
             android:label="@string/title_activity_customer_details"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".TestPayment"
             android:label="@string/title_activity_test_payment"
@@ -68,6 +68,10 @@
         <activity
             android:name=".PaywithPayzapp"
             android:label="@string/title_activity_paywith_payzapp"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".orsStatus"
+            android:label="@string/title_activity_ors_status"
             android:theme="@style/AppTheme"></activity>
     </application>
 

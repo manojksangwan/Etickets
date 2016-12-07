@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -151,20 +152,23 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
                 txt+=" Plateform No. <b>" +arList.get(0).getPlateform() +"</b>";
             }
             txt+="<br/>" + "<font color='red' size='1'>Reservation Charges <b>Rs." + arList.get(0).getReservationCharges() + "</b> per seat extra.</font>";
+            if (arList.get(0).getBusType().equals("Volvo")) {
+                iv_bus.setImageResource(R.drawable.bus_volvo);
+            } else {
+                iv_bus.setImageResource(R.drawable.bus_ordinary);
+            }
+
             recyclerView.setAdapter(adapter);
+
         }else {
-            txt = "<font color='red' size='3'><br/>Not available for online booking.<br/></font>";
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) header_Title.getLayoutParams();
-            layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-            header_Title.setLayoutParams(layoutParams);
+            txt = "<font color='red' size='3'><br/><big>Not available for online booking.</big><br/></font>";
+
+            //RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) header_Title.getLayoutParams();
+            //layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+            //header_Title.setLayoutParams(layoutParams);
         }
 
         header_Title.setText(Html.fromHtml(txt));
-        if (arList.get(0).getBusType().equals("Volvo")) {
-            iv_bus.setImageResource(R.drawable.bus_volvo);
-        } else {
-            iv_bus.setImageResource(R.drawable.bus_ordinary);
-        }
         dialog.dismiss();
     }
     @Override

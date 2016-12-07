@@ -43,13 +43,13 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginLeft="12sp"
         android:layout_marginRight="12sp"
         android:layout_marginTop="5sp"
         android:layout_below="@+id/ll_header"
-    android:id="@+id/recyclerView">
+        android:id="@+id/recyclerView">
 </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

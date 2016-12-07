@@ -65,10 +65,11 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paywith_payzapp);
 
-        dialog = ProgressDialog.show(this, "", "Please wait", true);
-        dialog.setInverseBackgroundForced(true);
-        dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
-        dialog.show();
+        //dialog = ProgressDialog.show(this, "", "Please wait", true);
+        //dialog.setInverseBackgroundForced(true);
+        //dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
+        //dialog.show();
+
         Intent i = getIntent();
         orsAS = i.getExtras().getParcelable("orsAvailableServices");
         activity = this;
@@ -85,36 +86,41 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
 
         final Context context = getApplicationContext();
 
+        WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
+        WibmoSDKConfig.setWibmoDomain("https://api.pc.enstage-sas.com");
+        WibmoSDK.init(context);
+
+        proceedtoPay=false;
+        wPayInitRequest = null;
+        wPayResponse = null;
+        processPayWithWibmo();
+
+        /*
         Thread t = new Thread() {
             public void run() {
-                //WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
-                //WibmoSDKConfig.setWibmoDomain("https://wallet.pc.enstage-sas.com");
-                WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
-                WibmoSDKConfig.setWibmoDomain("https://api.pc.enstage-sas.com");
+                try {
+                    //WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
+                    //WibmoSDKConfig.setWibmoDomain("https://wallet.pc.enstage-sas.com");
+                    WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
+                    WibmoSDKConfig.setWibmoDomain("https://api.pc.enstage-sas.com");
 
-                //uncomment next two statement for staging setup
-                //WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
-                //WibmoSDKConfig.setWibmoDomain("https://api.pc.enstage-sas.com");
+                    //uncomment next two statement for staging setup
+                    //WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
+                    //WibmoSDKConfig.setWibmoDomain("https://api.pc.enstage-sas.com");
 
-                WibmoSDK.init(context);
+                    WibmoSDK.init(context);
+                }finally {
+                    //dialog.dismiss();
+                    proceedtoPay=false;
+                    wPayInitRequest = null;
+                    wPayResponse = null;
+                    processPayWithWibmo();
+                }
             }
         };
         t.start();
+        */
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-        }
-
-        dialog.dismiss();
-
-        if (proceedtoPay) {
-            proceedtoPay=false;
-            wPayInitRequest = null;
-            wPayResponse = null;
-            processPayWithWibmo();
-        }
         bt_retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -232,7 +238,7 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
                 //Log.i(TAG, "resCode: " + wPayResponse.getResCode() +"; ResDesc: " + wPayResponse.getResDesc());
 
                 //sb.append("resCode: " + wPayResponse.getResCode()).append("\n");
-                sb.append("<font color='green'><big><b>Payment received successfully<b/></big></font><br/>");
+                sb.append("<font color='#558800'><big><b>Payment received successfully<b/></big></font><br/>");
 
                 //success;
                 String wPayTxnId = wPayResponse.getWibmoTxnId();
@@ -280,8 +286,9 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
             }//result not ok
 
             //sb.append("\nTime: "+timeDiff).append(" ms").append("\n");
-            sb.append("\nTime: " + timeDiff / 1000).append(" sec").append("\n");
-            outputView.setText(sb.toString());
+            sb.append("<br/><br/>Time: " + timeDiff / 1000).append(" sec").append("<br/>");
+
+            outputView.setText(Html.fromHtml(sb.toString()));
             /*
             AlertDialog.Builder builder = new AlertDialog.Builder(PaywithPayzapp.this);
             builder.setMessage(sb.toString())

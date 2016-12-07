@@ -67,6 +67,7 @@
     <string name="title_activity_web_shell">Web Shell Sample</string>
     <string name="ok">OK</string>
     <string name="title_activity_paywith_payzapp">PaywithPayzapp</string>
+    <string name="title_activity_ors_status">orsStatus</string>
 
 
 </resources>

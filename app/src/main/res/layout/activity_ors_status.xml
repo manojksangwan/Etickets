@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="in.gov.hartrans.etickets.AvailableServices">
+    tools:context="in.gov.hartrans.etickets.orsStatus">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,12 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:contentInsetStart="0dp"
-            android:contentInsetLeft="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetStart="0dp"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
+
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_available_services" />
+    <include layout="@layout/content_ors_status" />
+
 </android.support.design.widget.CoordinatorLayout>

@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.SimpleDateFormat;
@@ -59,6 +60,7 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
 
     private AutoCompleteTextView p_name, p_email, p_phone, iProof;
 
+    RadioButton paywith_cc_dc, paywith_upi;
 
 
     @Override
@@ -82,6 +84,8 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         p_phone = (AutoCompleteTextView) findViewById(R.id.p_phone);
         iProof = (AutoCompleteTextView) findViewById(R.id.iProof);
 
+        paywith_cc_dc = (RadioButton)findViewById(R.id.paywith_cc_dc);
+        paywith_upi = (RadioButton)findViewById(R.id.paywith_upi);
         // Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         // setSupportActionBar(my_toolbar);
 
@@ -121,7 +125,7 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         tv_rFare.setText(Html.fromHtml("Basic fare \u20B9 <big>" +orsAS.getrFare()+"</big>"));
         tv_rCharges.setText(Html.fromHtml("Reservation Charges \u20B9 <big>" +orsAS.getrCharges()+"</big>"));
         tv_tFare.setText(Html.fromHtml("Total Amount tobe paid \u20B9 <big>" +(orsAS.getrFare()+ orsAS.getrCharges() )+"</big>" ));
-        bt_pay_cc_dc.setText(Html.fromHtml("Proceed to pay \u20B9 <big>" +(orsAS.getrFare()+ orsAS.getrCharges() )+"</big> with CC/DC" ));
+        bt_pay_cc_dc.setText(Html.fromHtml("Proceed to pay \u20B9 <big>" +(orsAS.getrFare()+ orsAS.getrCharges() )+"</big>" ));
 
         // custom toolbar settings
         Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -224,10 +228,19 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
             Toast.makeText(CustomerDetails.this, ErrorMessage, Toast.LENGTH_SHORT).show();
         }else {
             orsAS.setSecureCode(ErrorMessage);
-            Intent intent = new Intent(CustomerDetails.this, PaywithPayzapp.class);
-            intent.putExtra("orsAvailableServices", orsAS);
-            startActivity(intent);
-            finish();
+            if (paywith_cc_dc.isChecked()) {
+                Intent intent = new Intent(CustomerDetails.this, PaywithPayzapp.class);
+                intent.putExtra("orsAvailableServices", orsAS);
+                startActivity(intent);
+                finish();
+            }
+            if (paywith_upi.isChecked())
+            {
+                Intent intent = new Intent(CustomerDetails.this, PaywithUPI.class);
+                intent.putExtra("orsAvailableServices", orsAS);
+                startActivity(intent);
+                finish();
+            }
         }
         dialog.dismiss();
     }

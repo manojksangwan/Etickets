@@ -7,4 +7,8 @@
     <dimen name="bus_width">40sp</dimen>
     <dimen name="busType_text_size_spinner">10sp</dimen>
     <dimen name="busType_text_size1_spinner">8sp</dimen>
+    <dimen name="bs_seat_width">15sp</dimen>
+    <dimen name="bs_seat_height">15sp</dimen>
+    <dimen name="bs_seat_textSize">8sp</dimen>
+
 </resources>

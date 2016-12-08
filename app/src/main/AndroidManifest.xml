@@ -72,6 +72,10 @@
         <activity
             android:name=".orsStatus"
             android:label="@string/title_activity_ors_status"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PaywithUPI"
+            android:label="@string/title_activity_paywith_upi"
             android:theme="@style/AppTheme"></activity>
     </application>
 

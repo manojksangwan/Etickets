@@ -10,6 +10,13 @@
     tools:context="in.gov.hartrans.etickets.CustomerDetails"
     tools:showIn="@layout/activity_customer_details">
 
+    <ScrollView
+        android:id="@+id/sv_customer_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
@@ -168,14 +175,38 @@
             android:layout_marginBottom="10sp"
             android:id="@+id/tv_tFare"/>
     </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/customerDetail_form_LL"
-        android:text=" Proceed to pay \u20B9 "
-        android:id="@+id/bt_pay_cc_dc"
-        android:background="@drawable/rounded_corner_box"
-        android:textColor="#ffffff"
-        android:layout_centerHorizontal="true"
-        />
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/paymentOptions"
+            android:layout_below="@+id/customerDetail_form_LL"
+            android:layout_marginTop="17sp"
+            android:layout_centerHorizontal="true">
+            <RadioButton android:id="@+id/paywith_cc_dc"
+                android:text="Paywith cc/dc"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </RadioButton>
+            <RadioButton android:id="@+id/paywith_upi"
+                android:text="Paywith UPI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </RadioButton>
+        </RadioGroup>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/paymentOptions"
+                android:layout_marginTop="15sp"
+                android:text=" Proceed to pay \u20B9 "
+                android:id="@+id/bt_pay_cc_dc"
+                android:background="@drawable/rounded_corner_box"
+                android:textColor="#ffffff"
+                android:imeOptions="actionDone"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+</ScrollView>
 </RelativeLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="50sp"
     android:gravity="center"
-    android:background="#BBDEFB">
+    android:background="#CCffffff">
 
     <TextView
         android:layout_width="35sp"

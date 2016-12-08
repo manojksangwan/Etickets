@@ -355,11 +355,16 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
                     "Reservation charges &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs. <font size='4'>" + rAmount + "</font><br/>"+
                     "Total Amount to be paid Rs. <font size='4'>" + tAmount + "</font><br/>";
 */
-            fAmount = "Fare Amount <br/>Reservation charges <br/>Total amount tobe paid";
-            fAmount1 ="₹ &nbsp; <font size='4'>" + fareAmount + "</font><br/>";
-            fAmount1+="₹ &nbsp; <font size='4'>" + rAmount + "</font><br/>";
-            fAmount1+="₹ &nbsp; <font size='4'>" + tAmount + "</font><br/>";
 
+            fAmount = "Fare Amount <big>₹&nbsp;" + fareAmount + "</big><br/>";
+            fAmount += "Reservation charges <big>₹&nbsp;" + rAmount + "</big><br/>";
+            fAmount += "Total amount <big>₹&nbsp;" + tAmount + "</big><br/>";
+
+            //fAmount1 ="₹ &nbsp; <font size='4'>" + fareAmount + "</font><br/>";
+            //fAmount1+="₹ &nbsp; <font size='4'>" + rAmount + "</font><br/>";
+            //fAmount1+="₹ &nbsp; <font size='4'>" + tAmount + "</font><br/>";
+
+            fAmount1="";
             fAmount2 = "<small><font color='red'>(Basic Fare ₹ &nbsp;" + rFare + " & Reservation charges ₹ &nbsp;" + rAmt + " per seat)</font></small>";
             tv_fareAmount.setText(Html.fromHtml(fAmount));
             tv_fareAmount1.setText(Html.fromHtml(fAmount1));

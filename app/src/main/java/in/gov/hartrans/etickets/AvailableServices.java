@@ -129,8 +129,8 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.book_eticket:
-                Toast.makeText(AvailableServices.this, "Book eTicket clicked", Toast.LENGTH_SHORT).show();
+            case R.id.knowstatus_eticket:
+                Toast.makeText(AvailableServices.this, "know status of eTicket clicked", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

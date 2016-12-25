@@ -182,8 +182,8 @@ public class BookEticketActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.book_eticket:
-                Toast.makeText(BookEticketActivity.this, "Book eTicket clicked", Toast.LENGTH_SHORT).show();
+            case R.id.knowstatus_eticket:
+                Toast.makeText(BookEticketActivity.this, "know status of eTicket clicked", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

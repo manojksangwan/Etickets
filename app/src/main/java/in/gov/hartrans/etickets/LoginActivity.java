@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.book_eticket:
+            case R.id.knowstatus_eticket:
                 Toast.makeText(LoginActivity.this, "Book eTicket clicked", Toast.LENGTH_SHORT).show();
                 break;
         }

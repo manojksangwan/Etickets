@@ -10,16 +10,21 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.hdfcmerchant.PayActivity;
 
+import in.gov.hartrans.etickets.Models.eTicketInfoUpdate_iResult;
 import in.gov.hartrans.etickets.Models.orsAvailableServices;
+import in.gov.hartrans.etickets.Models.upiResponse;
+import in.gov.hartrans.etickets.Models.upiResponseTask;
 
-public class PaywithUPI extends AppCompatActivity {
+public class PaywithUPI extends AppCompatActivity implements eTicketInfoUpdate_iResult {
     orsAvailableServices orsAS;
     private Activity activity = null;
     private TextView outputView = null;
-
+    String responsE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,10 +93,9 @@ public class PaywithUPI extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        try{
+        try {
             super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null)
-            {
+            if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
                 Bundle bundle = data.getExtras();
                 String pgMeTrnRefNo = bundle.getString("pgMeTrnRefNo");
                 String orderNo = bundle.getString("orderNo");
@@ -115,23 +119,44 @@ public class PaywithUPI extends AppCompatActivity {
                 String statusDesc = bundle.getString("statusDesc");
                 String responsecode = bundle.getString("responsecode");
 
-                String responsE;
-                responsE="States Code: "  +statusCode + "<br/>";
-                responsE+="States Desc: "  +statusDesc + "<br/>";
-                responsE+="responsecode: "  +responsecode + "<br/>";
-                responsE+="pgMeTrnRefNo: "  +pgMeTrnRefNo + "<br/>";
-                responsE+="orderNo: "  +orderNo + "<br/>";
-                responsE+="txnAmount: "  +txnAmount + "<br/>";
-                responsE+="tranAuthdate: "  +tranAuthdate + "<br/>";
-                responsE+="approvalCode: "  +approvalCode + "<br/>";
-                responsE+="payerVA: "  +payerVA + "<br/>";
-                responsE+="npciTxnId: "  +npciTxnId + "<br/>";
-                responsE+="refId: "  +refId + "<br/>";
 
-                outputView.setText(Html.fromHtml(responsE));
+                responsE = "States Code: " + statusCode + "<br/>";
+                responsE += "States Desc: " + statusDesc + "<br/>";
+                responsE += "responsecode: " + responsecode + "<br/>";
+                responsE += "pgMeTrnRefNo: " + pgMeTrnRefNo + "<br/>";
+                responsE += "orderNo: " + orderNo + "<br/>";
+                responsE += "txnAmount: " + txnAmount + "<br/>";
+                responsE += "tranAuthdate: " + tranAuthdate + "<br/>";
+                responsE += "approvalCode: " + approvalCode + "<br/>";
+                responsE += "payerVA: " + payerVA + "<br/>";
+                responsE += "npciTxnId: " + npciTxnId + "<br/>";
+                responsE += "refId: " + refId + "<br/>";
 
-            }}catch (Exception ex) {
+
+
+                upiResponse wr = new upiResponse(
+                        pgMeTrnRefNo, orderNo,txnAmount, tranAuthdate, approvalCode,
+                        payerVA, npciTxnId, refId, statusCode,statusDesc,responsecode);
+
+                upiResponseTask uRT = new upiResponseTask(PaywithUPI.this);
+                uRT.upiPGresponse_update(wr);
+            }
+        }catch (Exception ex) {
             outputView.setText(ex.getMessage());
         }
+    }
+
+    @Override
+    public void notify_eTicketInfoUpdate_Error(VolleyError error) {
+        Toast.makeText(PaywithUPI.this, error.toString(), Toast.LENGTH_SHORT).show();
+        outputView.setText(Html.fromHtml(responsE));
+    }
+
+    @Override
+    public void notify_eTicketInfoUpdate_Success(boolean DidError, String ErrorMessage) {
+        if (DidError) {
+            responsE += "<br/>" + ErrorMessage + "<br/>";
+        }
+        outputView.setText(Html.fromHtml(responsE));
     }
 }

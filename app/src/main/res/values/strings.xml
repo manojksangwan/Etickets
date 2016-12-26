@@ -69,6 +69,9 @@
     <string name="title_activity_paywith_payzapp">PaywithPayzapp</string>
     <string name="title_activity_ors_status">orsStatus</string>
     <string name="title_activity_paywith_upi">PaywithUPI</string>
+    <string name="title_activity_eticket_options">EticketOptions</string>
+    <string name="my_eTikcet_options_title">Welcome to Haryana Roadways</string>
+    <string name="my_eTikcet_options_subtitle">Online Bus eTickets Booking</string>
 
 
 </resources>

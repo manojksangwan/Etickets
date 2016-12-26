@@ -499,20 +499,11 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
     @Override
     public void notify_eTicketInfoUpdate_Success(boolean DidError, String ErrorMessage) {
         if (DidError){
-            //Log.d("myApp", "HR Server Response" + ErrorMessage);
             Toast.makeText(PaywithPayzapp.this, ErrorMessage, Toast.LENGTH_SHORT).show();
             outputView.setText(Html.fromHtml(sb.toString()));
         }else {
             outputView.setText(Html.fromHtml(sb.toString()));
         }
-/*
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-        }
-        finish();
-*/
         proceedtoPay=false;
     }
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="in.gov.hartrans.etickets.EticketOptions"
+    tools:showIn="@layout/activity_eticket_options">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:background="#CCffffff"
+        android:paddingBottom="35sp"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25sp"
+            android:layout_marginStart="25sp"
+            android:layout_marginLeft="25sp"
+            android:paddingRight="15sp"
+            android:orientation="vertical">
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/eTicket_online"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Online Booking of eTickets"
+                />
+            <TextView
+                android:id="@+id/tv_eTicket_online"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Select this option for online reservation of seats in Haryana Roadways Buses in advance between 10 days to 5 hrs from scheduled departure date and time of bus. Passengers can know status and perform cancellation for already booked eTickets."
+                 />
+            <TextView
+                android:id="@+id/tv_blankLine1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\n\n"
+                />
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/eTicket_onRoute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay on-Route for Bus Tickets"
+                />
+            <TextView
+                android:id="@+id/tv_eTicket_onRoute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Choose this option to pay ONLINE/cashless for bus tickets on route after boarding the bus. Instead paying cash to bus conductor, passengers can pay online for tickets using cashless payment options i.e. UPI, E-Wallets, Credit cards/Debit cards etc."
+                />
+            <TextView
+                android:id="@+id/tv_blankLine2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\n\n"
+                />
+            <Button
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="Continue"
+                android:id="@+id/bt_continue"
+                android:background="@drawable/rounded_corner_box"
+                android:textColor="#ffffff"
+                android:layout_gravity="center_horizontal"/>
+        </RadioGroup>
+    </android.support.v7.widget.LinearLayoutCompat>
+</RelativeLayout>

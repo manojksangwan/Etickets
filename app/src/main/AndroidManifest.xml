@@ -68,14 +68,22 @@
         <activity
             android:name=".PaywithPayzapp"
             android:label="@string/title_activity_paywith_payzapp"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".orsStatus"
             android:label="@string/title_activity_ors_status"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".PaywithUPI"
             android:label="@string/title_activity_paywith_upi"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EticketOptions"
+            android:label="@string/title_activity_eticket_options"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
     </application>
 

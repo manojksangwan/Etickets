@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class PaywithUPI extends AppCompatActivity implements eTicketInfoUpdate_i
     private Activity activity = null;
     private TextView outputView = null;
     String responsE;
+    Button bt_retry=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +45,19 @@ public class PaywithUPI extends AppCompatActivity implements eTicketInfoUpdate_i
 
         activity = this;
         outputView = (TextView) findViewById(R.id.tv_output);
-
+        bt_retry = (Button)  findViewById(R.id.bt_retry);
+        bt_retry.setVisibility(View.INVISIBLE);
         upi_transaction();
+
+
+        bt_retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_retry.setVisibility(View.INVISIBLE);
+                outputView.setText("please wait...");
+                upi_transaction();
+            }
+        });
     }
 
     private void upi_transaction(){
@@ -132,14 +146,25 @@ public class PaywithUPI extends AppCompatActivity implements eTicketInfoUpdate_i
                 responsE += "npciTxnId: " + npciTxnId + "<br/>";
                 responsE += "refId: " + refId + "<br/>";
 
+                if (statusCode.equals("S") || statusCode.equals("Success")) {
+                    responsE = "<font color='#558800'><big><b>Payment received successfully<b/></big></font><br/>";
+                    responsE+= "Transaction ID: <b>" + pgMeTrnRefNo + "</b><br/>"+npciTxnId + "<br/>";
+                    responsE+= "<font color='red'>eTicket Booked successfully</font><br/><small>eTicket details will be sent through email & sms.</small><br/>";
 
+                    upiResponse wr = new upiResponse(
+                            pgMeTrnRefNo, orderNo, txnAmount, tranAuthdate, approvalCode,
+                            payerVA, npciTxnId, refId, statusCode, statusDesc, responsecode);
 
-                upiResponse wr = new upiResponse(
-                        pgMeTrnRefNo, orderNo,txnAmount, tranAuthdate, approvalCode,
-                        payerVA, npciTxnId, refId, statusCode,statusDesc,responsecode);
+                    upiResponseTask uRT = new upiResponseTask(PaywithUPI.this);
+                    uRT.upiPGresponse_update(wr);
+                }
+                else
+                {
+                    responsE = "<font color='red'><big><b>Transaction Failed !!!<b/></big><br/><br/>"+statusDesc+"</font><br/>";
 
-                upiResponseTask uRT = new upiResponseTask(PaywithUPI.this);
-                uRT.upiPGresponse_update(wr);
+                    outputView.setText(Html.fromHtml(responsE));
+                    bt_retry.setVisibility(View.VISIBLE);
+                }
             }
         }catch (Exception ex) {
             outputView.setText(ex.getMessage());
@@ -156,6 +181,7 @@ public class PaywithUPI extends AppCompatActivity implements eTicketInfoUpdate_i
     public void notify_eTicketInfoUpdate_Success(boolean DidError, String ErrorMessage) {
         if (DidError) {
             responsE += "<br/>" + ErrorMessage + "<br/>";
+            bt_retry.setVisibility(View.VISIBLE);
         }
         outputView.setText(Html.fromHtml(responsE));
     }

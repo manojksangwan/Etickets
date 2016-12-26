@@ -76,8 +76,12 @@ public class MainActivity extends AppCompatActivity implements myIresultBasic {
             }
             else {
 
-                Intent bookEticket = new Intent(this, BookEticketActivity.class);
-                startActivity(bookEticket);
+                //Intent bookEticket = new Intent(this, BookEticketActivity.class);
+                //startActivity(bookEticket);
+
+                Intent eTicketOptions = new Intent(this, EticketOptions.class);
+                startActivity(eTicketOptions);
+                finish();
             }
 
         }catch (Exception ex)

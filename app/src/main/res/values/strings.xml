@@ -72,6 +72,8 @@
     <string name="title_activity_eticket_options">EticketOptions</string>
     <string name="my_eTikcet_options_title">Welcome to Haryana Roadways</string>
     <string name="my_eTikcet_options_subtitle">Online Bus eTickets Booking</string>
+    <string name="title_activity_epay_search">EpaySearch</string>
+    <string name="my_ePaySearch_title">Search Available ePay Bus</string>
 
 
 </resources>

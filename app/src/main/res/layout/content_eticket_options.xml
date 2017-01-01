@@ -52,7 +52,7 @@
                 android:id="@+id/eTicket_onRoute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pay on-Route for Bus Tickets"
+                android:text="ePay on-Route for Bus Tickets"
                 />
             <TextView
                 android:id="@+id/tv_eTicket_onRoute"

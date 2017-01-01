@@ -84,6 +84,10 @@
             android:name=".EticketOptions"
             android:label="@string/title_activity_eticket_options"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EpaySearch"
+            android:label="@string/title_activity_epay_search"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -40,7 +40,8 @@ public class EticketOptions extends AppCompatActivity {
                 }
                 if (eTicket_onRoute.isChecked())
                 {
-
+                    Intent ePaySearch = new Intent(EticketOptions.this, EpaySearch.class);
+                    startActivity(ePaySearch);
                 }
             }
         });

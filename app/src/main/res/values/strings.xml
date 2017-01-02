@@ -74,6 +74,8 @@
     <string name="my_eTikcet_options_subtitle">Online Bus eTickets Booking</string>
     <string name="title_activity_epay_search">EpaySearch</string>
     <string name="my_ePaySearch_title">Search Available ePay Bus</string>
+    <string name="title_activity_epay_fare_details">EpayFareDetails</string>
+    <string name="my_ePayFareDetails_title">ePay Bus Fare Detail</string>
 
 
 </resources>

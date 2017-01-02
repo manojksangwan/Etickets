@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@drawable/bk"
-    android:id="@+id/coordinatorLayout"
-    tools:context="in.gov.hartrans.etickets.EpaySearch">
+    tools:context="in.gov.hartrans.etickets.EpayFareDetails">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -23,6 +22,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_epay_search" />
+    <include layout="@layout/content_epay_fare_details" />
 
 </android.support.design.widget.CoordinatorLayout>

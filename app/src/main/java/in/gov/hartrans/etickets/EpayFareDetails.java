@@ -56,6 +56,8 @@ public class EpayFareDetails extends AppCompatActivity {
         tv_pNo = (AutoCompleteTextView) findViewById(R.id.tv_pNo);
         tv_totalFare = (AutoCompleteTextView) findViewById(R.id.tv_totalFare);
 
+        bt_pay_cc_dc = (Button) findViewById(R.id.bt_pay_cc_dc);
+
         SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
         Intent i = getIntent();
         orsAVS = i.getExtras().getParcelable("orsAvailableServices_onRoute");
@@ -77,6 +79,7 @@ public class EpayFareDetails extends AppCompatActivity {
                 paywith_cc_dc();
             }
         });
+        dialog.dismiss();
     }
 
     private void paywith_cc_dc()

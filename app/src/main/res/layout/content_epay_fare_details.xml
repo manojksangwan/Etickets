@@ -22,7 +22,7 @@
         android:layout_marginRight="12sp">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="50sp"
+            android:layout_height="65sp"
             android:id="@+id/iv_bus"
             android:src="@drawable/bus_volvo"
             android:layout_alignParentTop="true"
@@ -42,5 +42,134 @@
             android:gravity="center"
             />
     </LinearLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/llc_contents"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:background="#CCffffff"
+        android:paddingBottom="35sp"
+        android:paddingTop="5sp"
+        android:layout_marginTop="15sp"
+        android:layout_height="wrap_content"
+        app:divider="@color/colorAccent"
+        app:dividerPadding="5sp"
+        android:orientation="vertical"
+        android:layout_below="@+id/ll_header">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#000"
+        android:id="@+id/til_customerName"
+        android:layout_marginLeft="35sp"
+        android:layout_marginRight="35sp">
+        <AutoCompleteTextView
+            android:id="@+id/tv_customerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="eTicket fare paid by ( Name )"
+            android:maxLines="1"
+            android:singleLine="true" >
+        </AutoCompleteTextView>
+    </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000"
+            android:id="@+id/til_emailID"
+            android:layout_marginLeft="35sp"
+            android:layout_marginRight="35sp">
+            <AutoCompleteTextView
+                android:id="@+id/tv_emailID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E.mail ID"
+                android:maxLines="1"
+                android:singleLine="true" >
+            </AutoCompleteTextView>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000"
+            android:id="@+id/til_phoneNo"
+            android:layout_marginLeft="35sp"
+            android:layout_marginRight="35sp">
+            <AutoCompleteTextView
+                android:id="@+id/tv_phoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone No."
+                android:maxLines="1"
+                android:singleLine="true" >
+            </AutoCompleteTextView>
+        </android.support.design.widget.TextInputLayout>
+        <View style="@style/Divider"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000"
+            android:id="@+id/til_pNo"
+            android:layout_marginLeft="35sp"
+            android:layout_marginRight="35sp">
+            <AutoCompleteTextView
+                android:id="@+id/tv_pNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="No. of passengers"
+                android:maxLines="1"
+                android:singleLine="true" >
+            </AutoCompleteTextView>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000"
+            android:id="@+id/til_totalFare"
+            android:layout_marginLeft="35sp"
+            android:layout_marginRight="35sp">
+            <AutoCompleteTextView
+                android:id="@+id/tv_totalFare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Total Fare amount (Rs.)"
+                android:maxLines="1"
+                android:singleLine="true" >
+            </AutoCompleteTextView>
+        </android.support.design.widget.TextInputLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/paymentOptions"
+        android:layout_below="@+id/llc_contents"
+        android:layout_marginTop="17sp"
+        android:layout_centerHorizontal="true">
+        <RadioButton android:id="@+id/paywith_cc_dc"
+            android:text="Paywith cc/dc"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </RadioButton>
+        <RadioButton android:id="@+id/paywith_upi"
+            android:text="Paywith UPI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </RadioButton>
+    </RadioGroup>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/paymentOptions"
+        android:layout_marginTop="15sp"
+        android:text=" Proceed to Pay"
+        android:id="@+id/bt_pay_cc_dc"
+        android:background="@drawable/rounded_corner_box"
+        android:textColor="#ffffff"
+        android:imeOptions="actionDone"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

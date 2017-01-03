@@ -95,7 +95,7 @@ public class PassengerInfo extends AppCompatActivity {
         h_title+="<br/>Departure : " + output.format(orsAS.getjTime1())+"<br/>";
         h_title+="Selected seat(s) :  " + orsAS.getPrfSeats();
         header_Title.setText(Html.fromHtml(h_title));
-        iv_bus = (ImageView) findViewById(R.id.iv_bus);
+        //iv_bus = (ImageView) findViewById(R.id.iv_bus);
 
         if (orsAS.getBusType().equals("Volvo")) {
             iv_bus.setImageResource(R.drawable.bus_volvo);

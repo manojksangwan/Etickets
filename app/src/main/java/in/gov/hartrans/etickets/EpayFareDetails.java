@@ -14,14 +14,21 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import in.gov.hartrans.etickets.Models.eTicketInfoUpdateTask;
+import in.gov.hartrans.etickets.Models.eTicketInfoUpdate_iResult;
+import in.gov.hartrans.etickets.Models.eTicketInfoUpdate_onRouteTask;
+import in.gov.hartrans.etickets.Models.orsAvailableServices;
 import in.gov.hartrans.etickets.Models.orsAvailableServices_onRoute;
 
-public class EpayFareDetails extends AppCompatActivity {
+public class EpayFareDetails extends AppCompatActivity implements eTicketInfoUpdate_iResult {
+    SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
     orsAvailableServices_onRoute orsAVS;
     AppCompatTextView header_title=null;
     ImageView iv_bus=null;
@@ -30,6 +37,7 @@ public class EpayFareDetails extends AppCompatActivity {
     RadioButton paywith_cc_dc, paywith_upi;
     AutoCompleteTextView tv_customerName, tv_emailID, tv_phoneNo, tv_pNo, tv_totalFare;
     ProgressDialog dialog;
+    orsAvailableServices orsAS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +66,10 @@ public class EpayFareDetails extends AppCompatActivity {
 
         bt_pay_cc_dc = (Button) findViewById(R.id.bt_pay_cc_dc);
 
-        SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+        paywith_cc_dc = (RadioButton)findViewById(R.id.paywith_cc_dc);
+        paywith_upi = (RadioButton)findViewById(R.id.paywith_upi);
+
+
         Intent i = getIntent();
         orsAVS = i.getExtras().getParcelable("orsAvailableServices_onRoute");
 
@@ -139,7 +150,54 @@ public class EpayFareDetails extends AppCompatActivity {
             int pNo =  Integer.parseInt(tv_pNo.getText().toString());
             int totalFare =  Integer.parseInt(tv_totalFare.getText().toString());
 
+            orsAS = new orsAvailableServices( orsAVS.getTrip_srno(), orsAVS.getTrip_id(), 0,
+                    orsAVS.getrKMS(), orsAVS.getrFare(), orsAVS.getDepotID(), 0 , orsAVS.getrTripID(),Integer.parseInt(orsAVS.getTripID()),
+                    0, 0, 0, orsAVS.getBus_Type(), orsAVS.getTripCode(), orsAVS.getLeaving(), orsAVS.getDeparting(),
+                    orsAVS.getVia(), orsAVS.getrDesc(), "","", "", orsAVS.getTripRoute(), orsAVS.getDepotShortName(), new Date() );
             dialog.show();
+            orsAS.settSeats(pNo);
+            orsAS.setTotalFare(totalFare);
+            orsAS.setSecureCode("NEW");
+            orsAS.setpName(pName);
+            orsAS.setpPhone(pPhone);
+            orsAS.setpEmail(pEmail);
+            orsAS.setpName1(orsAVS.getBusNumber());
+            orsAS.setpName2(orsAVS.getCndName());
+            orsAS.setpName3(orsAVS.getCndMobileNo());
+            orsAS.setpName4(orsAVS.getCndWaibyillID());
+
+            eTicketInfoUpdate_onRouteTask et_Task = new eTicketInfoUpdate_onRouteTask(EpayFareDetails.this);
+            et_Task.eTicketInfo_update(orsAS);
         }
+    }
+
+    @Override
+    public void notify_eTicketInfoUpdate_Error(VolleyError error) {
+        dialog.dismiss();
+        Toast.makeText(EpayFareDetails.this, error.toString(), Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void notify_eTicketInfoUpdate_Success(boolean DidError, String ErrorMessage) {
+        if (DidError){
+            Toast.makeText(EpayFareDetails.this, ErrorMessage, Toast.LENGTH_SHORT).show();
+        }else {
+            orsAS.setSecureCode(ErrorMessage);
+            if (paywith_cc_dc.isChecked()) {
+                Intent intent = new Intent(EpayFareDetails.this, PaywithPayzapp.class);
+                intent.putExtra("orsAvailableServices", orsAS);
+                startActivity(intent);
+                finish();
+            }
+            if (paywith_upi.isChecked())
+            {
+                Intent intent = new Intent(EpayFareDetails.this, PaywithUPI.class);
+                intent.putExtra("orsAvailableServices", orsAS);
+                startActivity(intent);
+                finish();
+            }
+        }
+        dialog.dismiss();
     }
 }

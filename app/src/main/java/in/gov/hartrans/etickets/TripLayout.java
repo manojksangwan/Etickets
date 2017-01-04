@@ -356,9 +356,9 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
                     "Total Amount to be paid Rs. <font size='4'>" + tAmount + "</font><br/>";
 */
 
-            fAmount = "Fare Amount <big>₹&nbsp;" + fareAmount + "</big><br/>";
-            fAmount += "Reservation charges <big>₹&nbsp;" + rAmount + "</big><br/>";
-            fAmount += "Total amount <big>₹&nbsp;" + tAmount + "</big><br/>";
+            fAmount = "Fare Amount ₹&nbsp;" + fareAmount + "<br/>";
+            fAmount += "Reservation charges ₹&nbsp;" + rAmount + "<br/>";
+            fAmount += "Total amount ₹&nbsp;" + tAmount + "<br/>";
 
             //fAmount1 ="₹ &nbsp; <font size='4'>" + fareAmount + "</font><br/>";
             //fAmount1+="₹ &nbsp; <font size='4'>" + rAmount + "</font><br/>";

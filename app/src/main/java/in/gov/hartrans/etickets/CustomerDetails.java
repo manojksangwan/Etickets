@@ -86,6 +86,9 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
 
         paywith_cc_dc = (RadioButton)findViewById(R.id.paywith_cc_dc);
         paywith_upi = (RadioButton)findViewById(R.id.paywith_upi);
+
+        paywith_upi.setEnabled(false);
+
         // Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         // setSupportActionBar(my_toolbar);
 

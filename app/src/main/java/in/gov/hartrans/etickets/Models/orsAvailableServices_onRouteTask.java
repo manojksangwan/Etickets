@@ -20,7 +20,7 @@ import java.util.Map;
 public class orsAvailableServices_onRouteTask {
     myIresultBasic iResult;
     Context context;
-    String json_url = "http://hrtransport.in/ors/api/orsAvailableServices_onRoute";
+    String json_url = "http://hrtransport.gov.in/ors/api/orsAvailableServices_onRoute";
     public orsAvailableServices_onRouteTask(Context context)
     {
         this.context = context;

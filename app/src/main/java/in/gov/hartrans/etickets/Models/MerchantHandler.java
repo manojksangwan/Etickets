@@ -25,7 +25,7 @@ public class MerchantHandler {
     public static WPayInitRequest generateMessageHash(WPayInitRequest req) throws Exception {
         //String posturl = "https://"+ getMerchantDomain() +"/sampleMerchant/iapGeneric/generateInitReqMessageHash.jsp";
         //String posturl = "https://localhost/app/generatewPayMessageHash";
-        String posturl = "http://hrtransport.in/ors/api/appGeneratewPayMessageHash";
+        String posturl = "http://hrtransport.gov.in/ors/api/appGeneratewPayMessageHash";
 
         StringBuilder postsb = new StringBuilder();
 

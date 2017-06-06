@@ -46,8 +46,6 @@ import in.gov.hartrans.etickets.Models.orsAvailableServices;
 //import com.hdfcmerchant.PayActivity;
 
 
-
-
 public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpdate_iResult {
     orsAvailableServices orsAS;
 
@@ -159,10 +157,10 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         p_phone.setError(null);
         iProof.setError(null);
 
-        String pName = p_name.getText().toString();
-        String pEmail = p_email.getText().toString();
-        String pPhone = p_phone.getText().toString();
-        String i_proof = iProof.getText().toString();
+        String pName = p_name.getText().toString().trim();
+        String pEmail = p_email.getText().toString().trim();
+        String pPhone = p_phone.getText().toString().trim();
+        String i_proof = iProof.getText().toString().trim();
 
         boolean cancel = false;
         View focusView = null;

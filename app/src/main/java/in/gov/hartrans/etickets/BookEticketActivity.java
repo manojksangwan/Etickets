@@ -4,10 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,6 +46,7 @@ public class BookEticketActivity extends AppCompatActivity {
     private ArrayList<String> stations_leaving_from, stations_departing_to, list_departure_date;
     private ArrayAdapter<String> booking_stations_spinnerArrayAdapter;
     private Spinner sp_leaving_from, sp_departing_to, sp_departure_date, sp_bus_types;
+    private  TextView link_termsConditions;
 
     String[] bus_types = {"Super Luxury Bus", "Ordinary Bus"};
     String[] bus_sub_types = {"Mercedes/Volvo Bus", "Standard/General Bus"};
@@ -96,6 +99,21 @@ public class BookEticketActivity extends AppCompatActivity {
         sp_departure_date = (Spinner) findViewById(R.id.sp_departure_date);
 
         sp_departing_to.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, stations_departing_to));
+
+
+
+        link_termsConditions = (TextView) findViewById(R.id.link_TermsConditions);
+        link_termsConditions.setMovementMethod(LinkMovementMethod.getInstance());
+
+        link_termsConditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.twitter.com/"));
+                startActivity(in);
+            }
+
+        });
+
 
         // custom toolbar settings
         Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);

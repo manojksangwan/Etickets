@@ -259,6 +259,15 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/link_TermsConditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/my_link_TermsConditions"
+                android:textColor="#0501fc"
+                android:textSize="12sp"
+                android:gravity="center_horizontal"/>
         </LinearLayout>
     </ScrollView>
 

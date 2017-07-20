@@ -201,7 +201,12 @@ public class BookEticketActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.knowstatus_eticket:
-                Toast.makeText(BookEticketActivity.this, "know status of eTicket clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(BookEticketActivity.this, "know status of eTicket clicked", Toast.LENGTH_SHORT).show();
+                String url = "http://hartrans.gov.in/ors/KnowStatus";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+
                 break;
         }
         return super.onOptionsItemSelected(item);

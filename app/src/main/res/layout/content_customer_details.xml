@@ -181,6 +181,7 @@
             android:orientation="horizontal"
             android:id="@+id/paymentOptions"
             android:layout_below="@+id/customerDetail_form_LL"
+            android:visibility="gone"
             android:layout_marginTop="17sp"
             android:layout_centerHorizontal="true">
             <RadioButton android:id="@+id/paywith_cc_dc"

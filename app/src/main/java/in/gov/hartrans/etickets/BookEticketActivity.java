@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -56,6 +57,7 @@ public class BookEticketActivity extends AppCompatActivity {
     private String sLeaving, sDeparting, busType, dDate;
     private ProgressDialog dialog;
 
+    WebView web;
     // LinearLayout ll_info;
 
     @Override
@@ -201,12 +203,56 @@ public class BookEticketActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.knowstatus_eticket:
+                /*
                 //Toast.makeText(BookEticketActivity.this, "know status of eTicket clicked", Toast.LENGTH_SHORT).show();
                 String url = "http://hartrans.gov.in/ors/KnowStatus";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
+                */
 
+                // initialize our helper class
+                // then call the webview() methods with our context as parameter (MainActivity.this)
+                web = new WebViewHelper().webview(BookEticketActivity.this);
+
+                // specify the url we want to load
+                //web.loadUrl("http://codeofaninja.com/");
+                web.loadUrl("http://hartrans.gov.in/ors/KnowStatus");
+
+                // you can add JavaScript interface like this:
+                // web.addJavascriptInterface(new YourJsInterfaceClass(), “Android”);
+
+                // set web as content view
+                setContentView(web);
+                break;
+            case R.id.cancel_eticket:
+                web = new WebViewHelper().webview(BookEticketActivity.this);
+                web.loadUrl("http://hartrans.gov.in/ors/cancel");
+                setContentView(web);
+                break;
+
+            case R.id.privacy_policy:
+                web = new WebViewHelper().webview(BookEticketActivity.this);
+                web.loadUrl("http://hartrans.gov.in/ors/PrivacyPolicy1");
+                setContentView(web);
+                break;
+
+            case R.id.terms_conditions:
+                web = new WebViewHelper().webview(BookEticketActivity.this);
+                web.loadUrl("http://hartrans.gov.in/ors/terms");
+                setContentView(web);
+                break;
+
+            case R.id.cancellation_refund_rules:
+                web = new WebViewHelper().webview(BookEticketActivity.this);
+                web.loadUrl("http://hartrans.gov.in/ors/CancellationRules1");
+                setContentView(web);
+                break;
+
+            case R.id.contact_us:
+                web = new WebViewHelper().webview(BookEticketActivity.this);
+                web.loadUrl("http://hartrans.gov.in/ors/contactus");
+                setContentView(web);
                 break;
         }
         return super.onOptionsItemSelected(item);

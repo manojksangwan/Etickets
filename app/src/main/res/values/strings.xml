@@ -76,5 +76,5 @@
     <string name="my_ePaySearch_title">Search Available ePay Bus</string>
     <string name="title_activity_epay_fare_details">EpayFareDetails</string>
     <string name="my_ePayFareDetails_title">ePay Bus Fare Detail</string>
-    <string name="my_link_TermsConditions"><a href="#">Privacy Policy</a> | <a href="#">Terms &amp; Conditions </a> </string>
+    <string name="my_link_TermsConditions"><a href="http://hartrans.gov.in/ors/PrivacyPolicy1">Privacy Policy</a> | <a href="http://hartrans.gov.in/ors/terms">Terms &amp; Conditions </a> </string>
 </resources>

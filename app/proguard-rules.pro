@@ -64,3 +64,22 @@
 -dontwarn okhttp3.**
 -dontwarn okio.**
 #------ WIBMO -----
+
+# -keep class in.gov.hartrans.etickets.** { *; }
+# -verbose
+
+#-keep public class com.google.android.gms.**
+#-dontwarn com.google.android.gms.**
+
+#-dontwarn android.support.design.**
+#-keep class android.support.design.** { *; }
+#-dontnote com.google.android.gms.**
+#-keep class com.google.android.gms.** { *; }
+#-dontwarn org.apache.commons.**
+#-dontwarn org.apache.http.**
+#-keep class org.apache.http.** { *; }
+#-dontwarn jcifs.http.NetworkExplorer
+#-keep class android.support.v4.** { *; }
+#-dontnote android.support.v4.**
+#-keep class android.support.v7.** { *; }
+#-dontnote android.support.v7.**

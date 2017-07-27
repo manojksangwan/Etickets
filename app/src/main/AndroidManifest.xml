@@ -13,6 +13,8 @@
         android:xlargeScreens="true" />
 
     <application
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:replace="allowBackup"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

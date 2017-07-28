@@ -92,7 +92,6 @@
 #-keep class android.support.v7.** { *; }
 #-dontnote android.support.v7.**
 
-
 #-dontnote
 -dontwarn org.apache.**
 

@@ -65,8 +65,16 @@
 -dontwarn okio.**
 #------ WIBMO -----
 
-# -keep class in.gov.hartrans.etickets.** { *; }
-# -verbose
+#-keep class in.gov.hartrans.etickets.*{ *; }
+#-dontwarn in.gov.hartrans.etickets.**
+
+#-keep public class * extends android.app.AppCompatActivity
+#-keep public class * extends android.app.Activity
+#-keep public class * extends android.app.Application
+#-keep public class * extends android.app.Service
+
+
+-verbose
 
 #-keep public class com.google.android.gms.**
 #-dontwarn com.google.android.gms.**
@@ -83,3 +91,16 @@
 #-dontnote android.support.v4.**
 #-keep class android.support.v7.** { *; }
 #-dontnote android.support.v7.**
+
+#-dontnote
+-dontwarn org.apache.**
+
+#-keep class         org.apache.commons.beanutils.** { *; }
+#-keep interface     org.apache.commons.beanutils.** { *; }
+#-keep enum          org.apache.commons.beanutils.** { *; }
+
+-keepattributes SourceFile,LineNumberTable,EnclosingMethod
+#-keep includedescriptorclasses
+
+#-keep class org.apache.http.**
+#-keep interface org.apache.http.**

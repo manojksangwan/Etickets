@@ -1,23 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 26
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "in.gov.hartrans.etickets"
         minSdkVersion 16
-        targetSdkVersion 25
-        versionCode 1
+        targetSdkVersion 26
+        versionCode 2
         versionName "1.3"
         multiDexEnabled true
+
     }
     buildTypes {
         release {
             minifyEnabled true
-            useProguard true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //useProguard true
+            //shrinkResources true
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFile 'proguard-rules.pro'
+
         }
     }
     packagingOptions {
@@ -29,10 +32,10 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.volley:volley:1.0.0'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.wibmo.iap.sdk:wibmo-iap-sdk:2.1.0'
     compile project(':app-release')
     compile project(':secure-component-sdk')

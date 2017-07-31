@@ -13,8 +13,7 @@
         android:xlargeScreens="true" />
 
     <application
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:replace="allowBackup"
+        xmlns:tools="http://schemas.android.com/tools" tools:replace="allowBackup"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +27,6 @@
             android:theme="@style/HiddenTitleTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

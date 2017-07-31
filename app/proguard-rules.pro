@@ -93,14 +93,16 @@
 #-dontnote android.support.v7.**
 
 #-dontnote
+
+-keepattributes SourceFile,LineNumberTable,EnclosingMethod
 -dontwarn org.apache.**
+
+#-keep class org.apache.http.**
+#-keep interface org.apache.http.**
 
 #-keep class         org.apache.commons.beanutils.** { *; }
 #-keep interface     org.apache.commons.beanutils.** { *; }
 #-keep enum          org.apache.commons.beanutils.** { *; }
 
--keepattributes SourceFile,LineNumberTable,EnclosingMethod
-#-keep includedescriptorclasses
+#-keep, includedescriptorclasses
 
-#-keep class org.apache.http.**
-#-keep interface org.apache.http.**

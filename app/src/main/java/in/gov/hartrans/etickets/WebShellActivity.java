@@ -28,9 +28,15 @@ public class WebShellActivity extends ActionBarActivity {
     //String iapDomainToPost = "https://wallet.pc.enstage-sas.com";
 
     //config - prod
+    // 25-feb-2018
+    // String shellMerchantUrl = "https://www.wibmo.com/testWebMerchant";
+    // String iapPackage = "com.enstage.wibmo.sdk.inapp.main";
+    // String iapDomainToPost = "https://www.wibmo.com";
+
     String shellMerchantUrl = "https://www.wibmo.com/testWebMerchant";
     String iapPackage = "com.enstage.wibmo.sdk.inapp.main";
     String iapDomainToPost = "https://www.wibmo.com";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

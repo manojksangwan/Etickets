@@ -86,6 +86,7 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
 
         final Context context = getApplicationContext();
 
+        // 25-feb-2018
         WibmoSDK.setWibmoIntentActionPackage("com.enstage.wibmo.sdk.inapp.staging");
         WibmoSDKConfig.setWibmoDomain("https://api.pc.enstage-sas.com");
         WibmoSDK.init(context);
@@ -137,23 +138,24 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
     }
 
     private void processPayWithWibmo() {
+
         /*
         //Prod
-        String merID = "MYMERCHANTID"; //"MYMERCHANTID";//change me
-        String merAppID = "MYAPPID"; //"MYAPPID";//change me
+        String merID = "66056761569838049844"; //"MYMERCHANTID";//change me
+        String merAppID = "2389"; //"MYAPPID";//change me
         String merMerCountryCode = "IN";//change me if req
-        MerchantHandler.setMerchantDomain("myprodserver.com"); //"myprodserver.com"
+        MerchantHandler.setMerchantDomain("hartrans.gov.in"); //"myprodserver.com"
         //-
-        /**/
+        */
 
-        /**/
+
         //staging
         String merID = "143720911373862455993"; //"MYMERCHANTID";//change me
         String merAppID = "6455"; //"MYAPPID";//change me
         String merMerCountryCode = "IN";//change me if req
         MerchantHandler.setMerchantDomain("hartrans.gov.in"); //"mytestserver.com"
         //-
-        /**/
+
 
         wPayInitRequest = new WPayInitRequest();
         wPayInitRequest.setTxnType(WibmoSDK.TRANSACTION_TYPE_WPAY);
@@ -474,6 +476,7 @@ public class PaywithPayzapp extends AppCompatActivity implements eTicketInfoUpda
             }
             return null;
         }
+
 
         @Override
         protected void onPostExecute(Void result) {

@@ -56,6 +56,7 @@ public class TripLayout extends AppCompatActivity implements orsTripLayout_iResu
     private ProgressDialog dialog;
     ImageView iv_bus;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

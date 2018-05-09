@@ -22,7 +22,7 @@ import java.util.Map;
 public class wibmoResponseTask {
     eTicketInfoUpdate_iResult iResult;
     Context context;
-    String json_url = "http://hrtransport.gov.in/ors/api/WibmoPGresponse";
+    String json_url = "http://hartrans.gov.in/ors/api/WibmoPGresponse";
 
     public wibmoResponseTask(Context context)
     {

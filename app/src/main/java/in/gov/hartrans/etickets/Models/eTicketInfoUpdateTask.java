@@ -24,7 +24,7 @@ public class eTicketInfoUpdateTask {
     eTicketInfoUpdate_iResult iResult;
     Context context;
     ArrayList<orsAvailableServices> arList = new ArrayList<>();
-    String json_url = "http://hrtransport.gov.in/ors/api/orsEticketInfoUpdate";
+    String json_url = "http://hartrans.gov.in/ors/api/orsEticketInfoUpdate";
 
     public eTicketInfoUpdateTask(Context context)
     {

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class appStatusTask {
     myIresultBasic iResult;
     Context context;
-    String json_url = "http://hrtransport.gov.in/ors/api/orsAppStatus";
+    String json_url = "http://hartrans.gov.in/ors/api/orsAppStatus";
     ArrayList<appStatus> arList = new ArrayList<>();
 
     public appStatusTask(Context context)

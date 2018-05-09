@@ -17,6 +17,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,6 +50,7 @@ import in.gov.hartrans.etickets.Models.orsAvailableServices;
 public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpdate_iResult {
     orsAvailableServices orsAS;
 
+    WebView web;
     AppCompatTextView header_Title;
     private ProgressDialog dialog;
     ImageView iv_bus;
@@ -230,10 +232,20 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         }else {
             orsAS.setSecureCode(ErrorMessage);
             if (paywith_cc_dc.isChecked()) {
-                Intent intent = new Intent(CustomerDetails.this, PaywithPayzapp.class);
-                intent.putExtra("orsAvailableServices", orsAS);
-                startActivity(intent);
-                finish();
+
+                // Toast.makeText(CustomerDetails.this, orsAS.getSecureCode(), Toast.LENGTH_SHORT).show();
+                // dialog.dismiss();
+
+                // Intent intent = new Intent(CustomerDetails.this, PaywithPayzapp.class);
+                // intent.putExtra("orsAvailableServices", orsAS);
+                // startActivity(intent);
+
+                web = new WebViewHelper().webview(CustomerDetails.this);
+                // web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode="+orsAS.getSecureCode());
+                web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode=201810767610");
+                setContentView(web);
+
+                // finish();
             }
             if (paywith_upi.isChecked())
             {

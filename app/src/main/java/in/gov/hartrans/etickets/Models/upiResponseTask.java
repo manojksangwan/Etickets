@@ -19,7 +19,7 @@ import java.util.Map;
 public class upiResponseTask {
     eTicketInfoUpdate_iResult iResult;
     Context context;
-    String json_url = "http://hrtransport.gov.in/ors/api/upiPGresponse";
+    String json_url = "http://hartrans.gov.in/ors/api/upiPGresponse";
     public upiResponseTask(Context context)
     {
         this.context = context;

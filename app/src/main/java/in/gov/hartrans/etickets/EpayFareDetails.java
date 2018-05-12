@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ import in.gov.hartrans.etickets.Models.orsAvailableServices;
 import in.gov.hartrans.etickets.Models.orsAvailableServices_onRoute;
 
 public class EpayFareDetails extends AppCompatActivity implements eTicketInfoUpdate_iResult {
+    WebView web;
     SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
     orsAvailableServices_onRoute orsAVS;
     AppCompatTextView header_title=null;
@@ -185,16 +187,21 @@ public class EpayFareDetails extends AppCompatActivity implements eTicketInfoUpd
         }else {
             orsAS.setSecureCode(ErrorMessage);
             if (paywith_cc_dc.isChecked()) {
-                Intent intent = new Intent(EpayFareDetails.this, PaywithPayzapp.class);
-                intent.putExtra("orsAvailableServices", orsAS);
-                startActivity(intent);
-                finish();
+                // Intent intent = new Intent(EpayFareDetails.this, PaywithPayzapp.class);
+                // intent.putExtra("orsAvailableServices", orsAS);
+                // startActivity(intent);
+                // finish();
+
+                web = new WebViewHelper().webview(EpayFareDetails.this);
+                web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode="+orsAS.getSecureCode());
+                // web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode=201810767610");
+                setContentView(web);
             }
             if (paywith_upi.isChecked())
             {
-                Intent intent = new Intent(EpayFareDetails.this, PaywithUPI.class);
-                intent.putExtra("orsAvailableServices", orsAS);
-                startActivity(intent);
+                // Intent intent = new Intent(EpayFareDetails.this, PaywithUPI.class);
+                // intent.putExtra("orsAvailableServices", orsAS);
+                // startActivity(intent);
                 finish();
             }
         }

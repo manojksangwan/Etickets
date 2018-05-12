@@ -8,6 +8,6 @@ import java.util.ArrayList;
  * Created by manojK on 16/11/2016.
  */
 public interface orsTripLayout_iResult {
-    public void notifyError(VolleyError error);
-    public void notifySuccess(ArrayList<orsTripLayout> orsTL);
+    void notifyError(VolleyError error);
+    void notifySuccess(ArrayList<orsTripLayout> orsTL);
 }

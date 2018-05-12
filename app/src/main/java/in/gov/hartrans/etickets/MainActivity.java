@@ -4,24 +4,28 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.android.volley.VolleyError;
-
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import in.gov.hartrans.etickets.Models.appStatusTask;
 import in.gov.hartrans.etickets.Models.myIresultBasic;
 
 
 public class MainActivity extends AppCompatActivity implements myIresultBasic {
+    protected boolean isInternetAvailable = true;
     protected boolean _active = true;
     protected int _splashTime = 3000; // time to display the splash screen in ms
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (!appStatus.getInstance(this).isOnline()) {
+            Toast.makeText(this, "Internet connection not available.", Toast.LENGTH_LONG).show();
+            isInternetAvailable = false;
+            // finish();
+            // return;
+        }
 
         Thread splashTread = new Thread() {
             @Override
@@ -37,13 +41,18 @@ public class MainActivity extends AppCompatActivity implements myIresultBasic {
                 } catch (Exception e) {
 
                 } finally {
-
-                    appStatusTask app_Task = new appStatusTask(MainActivity.this);
-                    app_Task.getAppStatus();
+                    if (isInternetAvailable) {
+                        appStatusTask app_Task = new appStatusTask(MainActivity.this);
+                        app_Task.getAppStatus();
+                    }
+                    else {
+                        finish();
+                    }
                 }
-            };
+            }
         };
         splashTread.start();
+
     }
 
     @Override
@@ -87,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements myIresultBasic {
         }catch (Exception ex)
         {
             Toast.makeText(this, ex.getMessage().toString(), Toast.LENGTH_LONG).show();
-            ex.printStackTrace();
+            // ex.printStackTrace();
             finish();
         }
     }

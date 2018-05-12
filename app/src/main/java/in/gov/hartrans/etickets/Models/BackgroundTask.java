@@ -11,8 +11,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
+import in.gov.hartrans.etickets.BuildConfig;
 
 /**
  * Created by manojK on 06/11/2016.
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class BackgroundTask {
     Context context;
     ArrayList<BookingDays> arrayList = new ArrayList<>();
-    String json_url = "http://hartrans.gov.in/ors/api/bookingdays";
+    String json_url = BuildConfig.API_URL + "/bookingdays";
 
     public BackgroundTask(Context context)
     {

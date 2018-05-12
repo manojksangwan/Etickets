@@ -9,9 +9,9 @@ import java.util.ArrayList;
  * Created by manojK on 09/11/2016.
  */
 public interface myIResult {
-    public void notifySuccess(JSONObject response);
-    public void notifySuccess(JSONArray response);
+    void notifySuccess(JSONObject response);
+    void notifySuccess(JSONArray response);
 
-    public void notifyError(VolleyError error);
-    public void notifySuccess(ArrayList<orsAvailableServices> orsAS);
+    void notifyError(VolleyError error);
+    void notifySuccess(ArrayList<orsAvailableServices> orsAS);
 }

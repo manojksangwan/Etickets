@@ -91,7 +91,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
                     android:imeOptions="actionNext"
-                    android:inputType="textPhonetic"
+                    android:inputType="number"
+                    android:maxLength="2"
                     android:maxLines="1"
                     android:singleLine="true" >
                     <requestFocus />
@@ -161,7 +162,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
-                    android:inputType="textPhonetic"
+                    android:inputType="number"
+                    android:maxLength="2"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:singleLine="true" >
@@ -229,7 +231,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
-                    android:inputType="textPhonetic"
+                    android:inputType="number"
+                    android:maxLength="2"
                     android:maxLines="1"
                     android:singleLine="true" >
                     <requestFocus />
@@ -296,8 +299,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Age (in Yrs)"
-                    android:inputType="textPhonetic"
+                    android:inputType="number"
                     android:maxLines="1"
+                    android:maxLength="2"
                     android:singleLine="true" >
                     <requestFocus />
                     </AutoCompleteTextView>

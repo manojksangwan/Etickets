@@ -14,13 +14,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.gov.hartrans.etickets.BuildConfig;
+
 /**
  * Created by manojK on 03/01/2017.
  */
 public class orsAvailableServices_onRouteTask {
     myIresultBasic iResult;
     Context context;
-    String json_url = "http://hartrans.gov.in/ors/api/orsAvailableServices_onRoute";
+    String json_url = BuildConfig.API_URL + "/orsAvailableServices_onRoute";
     public orsAvailableServices_onRouteTask(Context context)
     {
         this.context = context;

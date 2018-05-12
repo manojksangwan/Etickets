@@ -56,10 +56,10 @@ public class orsAvailableServicesAdapter  extends RecyclerView.Adapter<orsAvaila
         TextView TripID, TripRoute, Jtime1, rFare;
         public MyViewHolder(View itemView) {
             super(itemView);
-            TripID = (TextView)itemView.findViewById(R.id.tripID);
-            Jtime1 = (TextView)itemView.findViewById(R.id.jTime1);
-            TripRoute = (TextView)itemView.findViewById(R.id.tripRoute);
-            rFare = (TextView)itemView.findViewById(R.id.rFare);
+            TripID = itemView.findViewById(R.id.tripID);
+            Jtime1 = itemView.findViewById(R.id.jTime1);
+            TripRoute = itemView.findViewById(R.id.tripRoute);
+            rFare = itemView.findViewById(R.id.rFare);
         }
     }
 }

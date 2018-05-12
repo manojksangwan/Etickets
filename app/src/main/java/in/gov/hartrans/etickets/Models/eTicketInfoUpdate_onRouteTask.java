@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.gov.hartrans.etickets.BuildConfig;
+
 /**
  * Created by manojK on 04/01/2017.
  */
@@ -19,7 +21,7 @@ public class eTicketInfoUpdate_onRouteTask {
     eTicketInfoUpdate_iResult iResult;
     Context context;
     ArrayList<orsAvailableServices> arList = new ArrayList<>();
-    String json_url = "http://hartrans.gov.in/ors/api/orsEticketInfoUpdate_onRoute";
+    String json_url =  BuildConfig.API_URL + "/orsEticketInfoUpdate_onRoute";
 
     public eTicketInfoUpdate_onRouteTask(Context context)
     {

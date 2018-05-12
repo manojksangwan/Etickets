@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.gov.hartrans.etickets.BuildConfig;
+
 /**
  * Created by manojK on 16/11/2016.
  */
@@ -20,7 +22,7 @@ public class orsTripLayoutTask {
     orsTripLayout_iResult iResult;
     Context context;
     ArrayList<orsTripLayout> arList = new ArrayList<>();
-    String json_url = "http://hartrans.gov.in/ors/api/orsTripLayout";
+    String json_url = BuildConfig.API_URL + "/orsTripLayout";
 
     public orsTripLayoutTask(Context context)
     {

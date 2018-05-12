@@ -204,17 +204,17 @@ public class orsTripLayoutAdapter extends RecyclerView.Adapter<orsTripLayoutAdap
             //iv_Layout_c1 = (ImageView) itemView.findViewById(R.id.iv_layout_c1);
             //iv_Layout_c2 = (ImageView) itemView.findViewById(R.id.iv_layout_c2);
 
-            tv_Layout_c1 = (TextView) itemView.findViewById(R.id.tv_layout_c1);
+            tv_Layout_c1 = itemView.findViewById(R.id.tv_layout_c1);
             tv_Layout_c1.setOnClickListener(this);
-            tv_Layout_c2 = (TextView) itemView.findViewById(R.id.layout_c2);
+            tv_Layout_c2 = itemView.findViewById(R.id.layout_c2);
             tv_Layout_c2.setOnClickListener(this);
-            tv_Layout_c3 = (TextView) itemView.findViewById(R.id.layout_c3);
+            tv_Layout_c3 = itemView.findViewById(R.id.layout_c3);
             tv_Layout_c3.setOnClickListener(this);
-            tv_Layout_c4 = (TextView) itemView.findViewById(R.id.layout_c4);
+            tv_Layout_c4 = itemView.findViewById(R.id.layout_c4);
             tv_Layout_c4.setOnClickListener(this);
-            tv_Layout_c5 = (TextView) itemView.findViewById(R.id.layout_c5);
+            tv_Layout_c5 = itemView.findViewById(R.id.layout_c5);
             tv_Layout_c5.setOnClickListener(this);
-            tv_Layout_c6 = (TextView) itemView.findViewById(R.id.layout_c6);
+            tv_Layout_c6 = itemView.findViewById(R.id.layout_c6);
             tv_Layout_c6.setOnClickListener(this);
         }
 

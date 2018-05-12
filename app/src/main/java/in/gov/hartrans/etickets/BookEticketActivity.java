@@ -309,13 +309,7 @@ public class BookEticketActivity extends AppCompatActivity {
         sp_departure_date.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, list_departure_date) {
             @Override
             public boolean isEnabled(int position) {
-                if (position == 0) {
-                    // Disable the first item from Spinner
-                    // First item will be use for hint
-                    return false;
-                } else {
-                    return true;
-                }
+                return position != 0;
             }
 
             @Override
@@ -370,13 +364,7 @@ public class BookEticketActivity extends AppCompatActivity {
         sp_leaving_from.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, stations_leaving_from) {
             @Override
             public boolean isEnabled(int position) {
-                if (position == 0) {
-                    // Disable the first item from Spinner
-                    // First item will be use for hint
-                    return false;
-                } else {
-                    return true;
-                }
+                return position != 0;
             }
 
             @Override
@@ -442,13 +430,7 @@ public class BookEticketActivity extends AppCompatActivity {
         sp_departing_to.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, stations_departing_to) {
             @Override
             public boolean isEnabled(int position) {
-                if (position == 0) {
-                    // Disable the first item from Spinner
-                    // First item will be use for hint
-                    return false;
-                } else {
-                    return true;
-                }
+                return position != 0;
             }
 
             @Override
@@ -509,13 +491,13 @@ public class BookEticketActivity extends AppCompatActivity {
 
             View mySpinner = inflater.inflate(R.layout.spinner, parent, false);
 
-            TextView txt = (TextView) mySpinner.findViewById(R.id.sp_main_item);
+            TextView txt = mySpinner.findViewById(R.id.sp_main_item);
             txt.setText(bus_types[position]);
 
-            TextView subtxt = (TextView) mySpinner.findViewById(R.id.sp_sub_item);
+            TextView subtxt = mySpinner.findViewById(R.id.sp_sub_item);
             subtxt.setText(bus_sub_types[position]);
 
-            ImageView img = (ImageView) mySpinner.findViewById(R.id.image);
+            ImageView img = mySpinner.findViewById(R.id.image);
             img.setImageResource(bus_images[position]);
             return mySpinner;
         }

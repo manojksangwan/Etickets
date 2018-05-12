@@ -2,16 +2,16 @@ package in.gov.hartrans.etickets.Models;
 
 import android.content.Context;
 
+import com.android.volley.BuildConfig;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
+
 
 /**
  * Created by manojK on 07/12/2016.
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class appStatusTask {
     myIresultBasic iResult;
     Context context;
-    String json_url = "http://hartrans.gov.in/ors/api/orsAppStatus";
+    String json_url = in.gov.hartrans.etickets.BuildConfig.API_URL +  "/orsAppStatus";
     ArrayList<appStatus> arList = new ArrayList<>();
 
     public appStatusTask(Context context)
@@ -72,7 +72,7 @@ public class appStatusTask {
             @Override
             public void onErrorResponse(VolleyError error) {
                 iResult.notifyError(error);
-                error.printStackTrace();
+                // error.printStackTrace();
             }
         });
         myVolleyService.getInstance(context).addToRequestQueue(jsonObjectRequest);

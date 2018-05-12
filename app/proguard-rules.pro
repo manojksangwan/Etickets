@@ -55,16 +55,6 @@
 -keepattributes Exceptions,InnerClasses,SourceFile,Signature,LineNumberTable,*Annotation*
 
 
-#------ WIBMO -----
--keep class com.enstage.wibmo.sdk.inapp.WibmoSDK { *; }
--keep class com.enstage.wibmo.sdk.inapp.pojo.** { *; }
--keepclassmembers class com.enstage.wibmo.sdk.inapp.pojo.** { *; }
--keep class com.enstage.wibmo.sdk.inapp.InAppBrowserActivity$* { *; }
--keep class com.enstage.wibmo.sdk.inapp.InAppShellJavaScriptInterface { *; }
--dontwarn okhttp3.**
--dontwarn okio.**
-#------ WIBMO -----
-
 #-keep class in.gov.hartrans.etickets.*{ *; }
 #-dontwarn in.gov.hartrans.etickets.**
 
@@ -99,10 +89,12 @@
 
 #-keep class org.apache.http.**
 #-keep interface org.apache.http.**
-
 #-keep class         org.apache.commons.beanutils.** { *; }
 #-keep interface     org.apache.commons.beanutils.** { *; }
 #-keep enum          org.apache.commons.beanutils.** { *; }
-
 #-keep, includedescriptorclasses
 
+
+# 10-may-2018
+# added to ingnore warnings to generate signed apk
+-ignorewarnings

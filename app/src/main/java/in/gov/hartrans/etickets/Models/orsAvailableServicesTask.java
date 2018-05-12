@@ -25,6 +25,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import in.gov.hartrans.etickets.BuildConfig;
+
 /**
  * Created by manojK on 07/11/2016.
  */
@@ -32,7 +34,7 @@ public class orsAvailableServicesTask implements Serializable {
     myIResult iResult;
     Context context;
     ArrayList<orsAvailableServices> arList = new ArrayList<>();
-    String json_url = "http://hartrans.gov.in/ors/api/orsAvailableServices";
+    String json_url = BuildConfig.API_URL + "/orsAvailableServices";
 
     public orsAvailableServicesTask(Context context)
     {

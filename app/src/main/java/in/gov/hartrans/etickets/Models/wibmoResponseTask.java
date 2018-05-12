@@ -16,13 +16,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.gov.hartrans.etickets.BuildConfig;
+
 /**
  * Created by manojK on 05/12/2016.
  */
 public class wibmoResponseTask {
     eTicketInfoUpdate_iResult iResult;
     Context context;
-    String json_url = "http://hartrans.gov.in/ors/api/WibmoPGresponse";
+    String json_url = BuildConfig.API_URL + "/WibmoPGresponse";
 
     public wibmoResponseTask(Context context)
     {

@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Etickets.iml" filepath="$PROJECT_DIR$/Etickets.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SecureComponent-release/SecureComponent-release.iml" filepath="$PROJECT_DIR$/SecureComponent-release/SecureComponent-release.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app-release/app-release.iml" filepath="$PROJECT_DIR$/app-release/app-release.iml" />
-      <module fileurl="file://$PROJECT_DIR$/secure-component-sdk/secure-component-sdk.iml" filepath="$PROJECT_DIR$/secure-component-sdk/secure-component-sdk.iml" />
     </modules>
   </component>
 </project>

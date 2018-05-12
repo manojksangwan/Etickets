@@ -1,21 +1,15 @@
 package in.gov.hartrans.etickets;
 
-import android.app.Activity;
+
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.AutoCompleteTextView;
@@ -25,26 +19,12 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.SimpleDateFormat;
-import java.util.TimeZone;
-import android.support.v7.app.ActionBarActivity;
-import java.util.SimpleTimeZone;
-
 import com.android.volley.VolleyError;
-import com.enstage.wibmo.sdk.WibmoSDK;
-import com.enstage.wibmo.sdk.WibmoSDKConfig;
-import com.enstage.wibmo.sdk.inapp.pojo.WPayInitRequest;
-import com.enstage.wibmo.sdk.inapp.pojo.MerchantInfo;
-import com.enstage.wibmo.sdk.inapp.pojo.CustomerInfo;
-import com.enstage.wibmo.sdk.inapp.pojo.TransactionInfo;
-import com.enstage.wibmo.sdk.inapp.pojo.WPayResponse;
-import com.enstage.wibmo.sdk.inapp.InAppTxnIdCallback;
 
-
-import in.gov.hartrans.etickets.Models.MerchantHandler;
+import in.gov.hartrans.etickets.Models.PrefManager;
 import in.gov.hartrans.etickets.Models.eTicketInfoUpdateTask;
 import in.gov.hartrans.etickets.Models.eTicketInfoUpdate_iResult;
 import in.gov.hartrans.etickets.Models.orsAvailableServices;
-//import com.hdfcmerchant.PayActivity;
 
 
 public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpdate_iResult {
@@ -61,7 +41,7 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
     private AutoCompleteTextView p_name, p_email, p_phone, iProof;
 
     RadioButton paywith_cc_dc, paywith_upi;
-
+    // PrefManager pm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +53,22 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         dialog.setProgressStyle(android.R.attr.progressBarStyleInverse);
 
 
-
         tv_rFare = (TextView) findViewById(R.id.tv_rFare);
         tv_rCharges = (TextView) findViewById(R.id.tv_rCharges);
         tv_tFare = (TextView) findViewById(R.id.tv_tFare);
         bt_pay_cc_dc = (Button) findViewById(R.id.bt_pay_cc_dc);
 
         p_name = (AutoCompleteTextView) findViewById(R.id.p_name);
+        p_name.setText(new PrefManager(this).getpName());
+
         p_email = (AutoCompleteTextView) findViewById(R.id.p_email);
+        p_email.setText(new PrefManager(this).getpEmail() );
+
         p_phone = (AutoCompleteTextView) findViewById(R.id.p_phone);
+        p_phone.setText(new PrefManager(this).getpPhone() );
+
         iProof = (AutoCompleteTextView) findViewById(R.id.iProof);
+        iProof.setText(new PrefManager(this).getpIDC() );
 
         paywith_cc_dc = (RadioButton)findViewById(R.id.paywith_cc_dc);
         paywith_upi = (RadioButton)findViewById(R.id.paywith_upi);
@@ -98,8 +84,10 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 //reset
-                Intent intent = new Intent(CustomerDetails.this, TestPayment.class);
-                startActivity(intent);
+
+                //Intent intent = new Intent(CustomerDetails.this, TestPayment.class);
+                // startActivity(intent);
+                finish();
             }
         });
         fab.setVisibility(View.GONE);
@@ -167,21 +155,23 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
         boolean cancel = false;
         View focusView = null;
 
-        if (TextUtils.isEmpty(pName) ) {
+        if (TextUtils.isEmpty(pName) || pName.length() < 5 ) {
             p_name.setError(getString(R.string.error_field_required));
             focusView = p_name;
             cancel = true;
             p_name.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(pEmail) ) {
+
+        if (TextUtils.isEmpty(pEmail) || pEmail.length() < 8  || !(pEmail.contains("@") && pEmail.contains(".") ) ) {
             p_email.setError(getString(R.string.error_field_required));
             focusView = p_email;
             cancel = true;
             p_email.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(pPhone) ) {
+
+        if (TextUtils.isEmpty(pPhone) || pPhone.length() < 10 ) {
             p_phone.setError(getString(R.string.error_field_required));
             focusView = p_phone;
             cancel = true;
@@ -214,6 +204,9 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
             orsAS.setpPhone(pPhone);
             orsAS.setiProof(i_proof);
 
+            new PrefManager(this).saveLoginDetails(pName, pEmail, pPhone, i_proof);
+
+            // pm.saveLoginDetails( pName, pEmail, pPhone, i_proof );
             eTicketInfoUpdateTask et_Task = new eTicketInfoUpdateTask(CustomerDetails.this);
             et_Task.eTicketInfo_update(orsAS, "PassengerInfo");
 
@@ -241,17 +234,17 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
                 // startActivity(intent);
 
                 web = new WebViewHelper().webview(CustomerDetails.this);
-                // web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode="+orsAS.getSecureCode());
-                web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode=201810767610");
+                web.loadUrl( BuildConfig.API_PAYNOW + "?secureCode="+orsAS.getSecureCode());
+                // web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode=201810767610");
                 setContentView(web);
 
                 // finish();
             }
             if (paywith_upi.isChecked())
             {
-                Intent intent = new Intent(CustomerDetails.this, PaywithUPI.class);
-                intent.putExtra("orsAvailableServices", orsAS);
-                startActivity(intent);
+                // Intent intent = new Intent(CustomerDetails.this, PaywithUPI.class);
+                // intent.putExtra("orsAvailableServices", orsAS);
+                // startActivity(intent);
                 finish();
             }
         }

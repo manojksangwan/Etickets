@@ -1,2 +1,2 @@
-include ':app', ':secure-component-sdk', ':app-release', ':SecureComponent-release'
+include ':app', ':app-release'
 

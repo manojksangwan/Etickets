@@ -234,6 +234,7 @@ public class CustomerDetails extends AppCompatActivity implements eTicketInfoUpd
                 // startActivity(intent);
 
                 web = new WebViewHelper().webview(CustomerDetails.this);
+                web.getSettings().setBuiltInZoomControls(true);
                 web.loadUrl( BuildConfig.API_PAYNOW + "?secureCode="+orsAS.getSecureCode());
                 // web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode=201810767610");
                 setContentView(web);

@@ -10,7 +10,7 @@
         android:normalScreens="false"
         android:requiresSmallestWidthDp="1024"
         android:smallScreens="false"
-        android:xlargeScreens="true" />
+        android:xlargeScreens="false" />
 
     <application
         xmlns:tools="http://schemas.android.com/tools" tools:replace="allowBackup"

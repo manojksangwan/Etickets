@@ -106,6 +106,17 @@ public class AvailableServices extends AppCompatActivity implements myIResult {
                         //String BusType = arList.get(position).getBusType();
 
                         //orsTripLayoutSearch orsTLS = new orsTripLayoutSearch(TripID, BusType);
+
+                        if ( arList.get(position).getCloseTime() <=0 ){
+                            Toast.makeText(AvailableServices.this, "Booking closed, available upto 5 hours before the scheduled departure of the bus service." , Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        if ( arList.get(position).getAvailableSeats() <=0 ){
+                            Toast.makeText(AvailableServices.this, "All seats BOOKED" , Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
                         Intent intent = new Intent(AvailableServices.this, TripLayout.class);
                         //intent.putExtra("orsTripLayoutSearch", orsTLS);
                         intent.putExtra("orsAvailableServices", arList.get(position));

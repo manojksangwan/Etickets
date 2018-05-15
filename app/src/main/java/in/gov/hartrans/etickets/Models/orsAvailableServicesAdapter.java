@@ -44,7 +44,21 @@ public class orsAvailableServicesAdapter  extends RecyclerView.Adapter<orsAvaila
         SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
         holder.TripID.setText(arrayList.get(position).getTripID()+"");
         holder.Jtime1.setText(output.format(arrayList.get(position).getjTime1()));
-        holder.rFare.setText(Html.fromHtml("Seats: "+arrayList.get(position).getAvailableSeats()+"<br/>\u20B9 &nbsp;"+arrayList.get(position).getrFare()));
+
+        if (arrayList.get(position).getCloseTime() <= 0){
+            holder.rFare.setText(Html.fromHtml("Booking <br />CLOSED" ));
+            holder.rFare.setBackgroundResource(R.drawable.rounded_corner_box_pink);
+            return;
+        }
+
+        if (arrayList.get(position).getAvailableSeats() > 0) {
+            holder.rFare.setText(Html.fromHtml("Seats: " + arrayList.get(position).getAvailableSeats() + "<br/>\u20B9 &nbsp;" + arrayList.get(position).getrFare()));
+            holder.rFare.setBackgroundResource(R.drawable.rounded_corner_box);
+        }
+        if (arrayList.get(position).getAvailableSeats() <= 0){
+            holder.rFare.setText(Html.fromHtml("All Seats <br />BOOKED " ));
+            holder.rFare.setBackgroundResource(R.drawable.rounded_corner_box_pink);
+        }
     }
 
     @Override

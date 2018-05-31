@@ -1,8 +1,10 @@
 package in.gov.hartrans.etickets;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.Toast;
 import com.android.volley.VolleyError;
 import org.json.JSONArray;
@@ -105,5 +107,25 @@ public class MainActivity extends AppCompatActivity implements myIresultBasic {
     public void notifyError(VolleyError error) {
         Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
         finish();
+    }
+
+    protected void getDeviceDensity(Context context)
+    {
+        int density= getResources().getDisplayMetrics().densityDpi;
+        switch(density)
+        {
+            case DisplayMetrics.DENSITY_LOW:
+                Toast.makeText(context, "LDPI", Toast.LENGTH_SHORT).show();
+                break;
+            case DisplayMetrics.DENSITY_MEDIUM:
+                Toast.makeText(context, "MDPI", Toast.LENGTH_SHORT).show();
+                break;
+            case DisplayMetrics.DENSITY_HIGH:
+                Toast.makeText(context, "HDPI", Toast.LENGTH_SHORT).show();
+                break;
+            case DisplayMetrics.DENSITY_XHIGH:
+                Toast.makeText(context, "XHDPI", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

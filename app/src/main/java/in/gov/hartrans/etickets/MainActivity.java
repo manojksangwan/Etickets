@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements myIresultBasic {
 
         }catch (Exception ex)
         {
-            Toast.makeText(this, ex.getMessage().toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, ex.toString(), Toast.LENGTH_LONG).show();
             // ex.printStackTrace();
             finish();
         }
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements myIresultBasic {
 
     @Override
     public void notifyError(VolleyError error) {
-        Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show();
         finish();
     }
 

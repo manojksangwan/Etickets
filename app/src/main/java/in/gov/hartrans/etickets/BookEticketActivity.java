@@ -78,8 +78,8 @@ public class BookEticketActivity extends AppCompatActivity {
 
         initVolleyCallback();
         mVolleyService = new VolleyService(mResultCallback, this);
-        mVolleyService.getDataVolley("GETCALL_leaving_from", "http://hartrans.gov.in/ors/api/bookingStations");
-        mVolleyService.getDataVolley("GETCALL_departure_date", "http://hartrans.gov.in/ors/api/bookingDays");
+        mVolleyService.getDataVolley("GETCALL_leaving_from", "https://ors.hartrans.gov.in/api/bookingStations");
+        mVolleyService.getDataVolley("GETCALL_departure_date", "https://ors.hartrans.gov.in/api/bookingDays");
 
 
         //((TextView) findViewById(R.id.display_info_query)).setText(Html.fromHtml(getText(R.string.prompt_info_query).toString()));
@@ -218,7 +218,7 @@ public class BookEticketActivity extends AppCompatActivity {
 
                 // specify the url we want to load
                 //web.loadUrl("http://codeofaninja.com/");
-                web.loadUrl("http://hartrans.gov.in/ors/KnowStatus");
+                web.loadUrl("https://ors.hartrans.gov.in/KnowStatus");
 
                 // you can add JavaScript interface like this:
                 // web.addJavascriptInterface(new YourJsInterfaceClass(), “Android”);
@@ -228,31 +228,31 @@ public class BookEticketActivity extends AppCompatActivity {
                 break;
             case R.id.cancel_eticket:
                 web = new WebViewHelper().webview(BookEticketActivity.this);
-                web.loadUrl("http://hartrans.gov.in/ors/cancel");
+                web.loadUrl("https://ors.hartrans.gov.in/cancel");
                 setContentView(web);
                 break;
 
             case R.id.privacy_policy:
                 web = new WebViewHelper().webview(BookEticketActivity.this);
-                web.loadUrl("http://hartrans.gov.in/ors/PrivacyPolicy1");
+                web.loadUrl("https://ors.hartrans.gov.in/PrivacyPolicy1");
                 setContentView(web);
                 break;
 
             case R.id.terms_conditions:
                 web = new WebViewHelper().webview(BookEticketActivity.this);
-                web.loadUrl("http://hartrans.gov.in/ors/terms");
+                web.loadUrl("https://ors.hartrans.gov.in/terms");
                 setContentView(web);
                 break;
 
             case R.id.cancellation_refund_rules:
                 web = new WebViewHelper().webview(BookEticketActivity.this);
-                web.loadUrl("http://hartrans.gov.in/ors/CancellationRules1");
+                web.loadUrl("https://ors.hartrans.gov.in/CancellationRules1");
                 setContentView(web);
                 break;
 
             case R.id.contact_us:
                 web = new WebViewHelper().webview(BookEticketActivity.this);
-                web.loadUrl("http://hartrans.gov.in/ors/contactus");
+                web.loadUrl("https://ors.hartrans.gov.in/contactus");
                 setContentView(web);
                 break;
         }
@@ -402,7 +402,7 @@ public class BookEticketActivity extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT).show();
                     stations_departing_to.clear();
                     stations_departing_to.add("select Departing to");
-                    mVolleyService.getDataVolley("GETCALL_departing_to", "http://hartrans.gov.in/ors/api/bookingStations/"+selectedItemText);
+                    mVolleyService.getDataVolley("GETCALL_departing_to", "https://ors.hartrans.gov.in/api/bookingStations/"+selectedItemText);
                 }
             }
             @Override

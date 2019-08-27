@@ -14,7 +14,6 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:orientation">vertical</item>
-
     </style>
 
     <style name="NoActionBar_fullscreen" parent="AppTheme">
@@ -29,9 +28,7 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="hint_TextLabel_size" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">10sp</item>
     </style>

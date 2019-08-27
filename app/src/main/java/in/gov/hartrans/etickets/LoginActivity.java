@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -61,7 +62,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     // UI references.
     private AutoCompleteTextView mEmailView;
-    private AutoCompleteTextView mMobileNoView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mMobileNoView = (AutoCompleteTextView) findViewById(R.id.mobile_no);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -100,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         Toolbar my_toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(my_toolbar);
-        getSupportActionBar().setTitle(R.string.my_login_title);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.my_login_title);
         getSupportActionBar().setSubtitle(R.string.my_subtitle);
         getSupportActionBar().setIcon(R.mipmap.ic_toolbar);
     }
@@ -176,12 +175,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Reset errors.
         mEmailView.setError(null);
-        mMobileNoView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
-        String mobile_no = mMobileNoView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -205,13 +202,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
 
-        // Check for a valid mobile no.
-        if (TextUtils.isEmpty(mobile_no) || !isMobileNoValid(mobile_no)) {
-            mMobileNoView.setError(getString(R.string.error_invalid_mobile_no));
-            focusView = mMobileNoView;
-            cancel = true;
-        }
-
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -220,7 +210,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, mobile_no, password);
+            mAuthTask = new UserLoginTask(email, password);
 
             mAuthTask.execute((Void) null);
         }
@@ -336,12 +326,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
-        private final String mMobile_No;
 
-        UserLoginTask(String email, String mobile_no, String password) {
+        UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
-            mMobile_No = mobile_no;
         }
         @Override
         protected Boolean doInBackground(Void... params) {

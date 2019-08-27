@@ -50,27 +50,9 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tvOR"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="O.R."
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <AutoCompleteTextView
-                    android:id="@+id/mobile_no"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_mobile_no"
-                    android:inputType="textPhonetic"
-                    android:maxLines="1"
-                    android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 

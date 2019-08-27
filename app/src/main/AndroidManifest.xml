@@ -58,7 +58,8 @@
             android:label="@string/title_activity_customer_details"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateVisible|adjustPan"
+        />
         <activity
             android:name=".orsStatus"
             android:label="@string/title_activity_ors_status"

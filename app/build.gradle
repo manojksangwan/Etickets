@@ -5,28 +5,28 @@ android {
         release {
             keyAlias 'eTicketKey'
             keyPassword 'bedsheet_123'
-            storeFile file('C:/apkKey/eTickets.jks')
+            storeFile file('C:/apkKey/eTicketsHR.jks')
             storePassword 'bedsheet_123'
         }
     }
-    compileSdkVersion 26
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "in.gov.hartrans.etickets"
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 2
-        versionName "1.01"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 4
+        versionName "4.01"
         multiDexEnabled true
     }
     buildTypes {
         debug {
-            buildConfigField("String", "API_URL", "\"http://hartrans.gov.in/ors/api\"")
-            buildConfigField("String", "API_PAYNOW", "\"http://hartrans.gov.in/ors/paynowapp\"")
+            buildConfigField("String", "API_URL", "\"https://ors.hartrans.gov.in/api\"")
+            buildConfigField("String", "API_PAYNOW", "\"https://ors.hartrans.gov.in/paynowapp\"")
         }
         release {
-            buildConfigField("String", "API_URL", "\"http://hartrans.gov.in/ors/api\"")
-            buildConfigField("String", "API_PAYNOW", "\"http://hartrans.gov.in/ors/paynowapp\"")
+            buildConfigField("String", "API_URL", "\"https://ors.hartrans.gov.in/api\"")
+            buildConfigField("String", "API_PAYNOW", "\"https://ors.hartrans.gov.in/paynowapp\"")
             minifyEnabled true
             useProguard true
             shrinkResources true
@@ -44,8 +44,15 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.android.volley:volley:1.0.0'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
+
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    compile 'com.android.support:design:+'
+    compile 'com.android.volley:volley:1.1.0'
+    compile 'com.android.support:recyclerview-v7:+'
+
+    // 27-aug-2019
+    // compile 'com.android.support:appcompat-v7:26.1.0'
+    // compile 'com.android.support:design:26.1.0'
+    // compile 'com.android.volley:volley:1.1.0'
+    // compile 'com.android.support:recyclerview-v7:26.1.0'
 }

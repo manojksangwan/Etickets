@@ -193,7 +193,7 @@ public class EpayFareDetails extends AppCompatActivity implements eTicketInfoUpd
                 // finish();
 
                 web = new WebViewHelper().webview(EpayFareDetails.this);
-                web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode="+orsAS.getSecureCode());
+                web.loadUrl("https://ors.hartrans.gov.in/paynowapp?secureCode="+orsAS.getSecureCode());
                 // web.loadUrl("http://hartrans.gov.in/ors/paynowapp?secureCode=201810767610");
                 setContentView(web);
             }
